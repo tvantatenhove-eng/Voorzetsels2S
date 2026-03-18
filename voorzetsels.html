@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voorzetsels – Da Vinci College</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:       #1B3A6B;
+    --navy-dark:  #122852;
+    --navy-card:  #1E4080;
+    --blue-mid:   #3B5EC6;
+    --blue-bg:    #D0DDEF;
+    --blue-light: #E8F0FA;
+    --white:      #ffffff;
+    --text:       #1a2840;
+    --muted:      #5b6f8a;
+    --correct:    #22a06b;
+    --wrong:      #d93025;
+    --border:     #c0cfe8;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--blue-bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ══ TOP NAV ══ */
+  .topnav {
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 66px;
+    box-shadow: 0 2px 12px rgba(27,58,107,.10);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    text-decoration: none;
+  }
+
+  .dv-asterisk { width: 40px; height: 40px; flex-shrink: 0; }
+
+  .logo-text { font-size: 16px; font-weight: 800; color: var(--navy); line-height: 1.2; }
+  .logo-text small { display:block; font-size:11px; font-weight:600; color:var(--muted); }
+
+  .nav-links { display:flex; align-items:center; gap:4px; list-style:none; flex-wrap:wrap; }
+
+  .nav-links a {
+    color: var(--navy);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 7px 13px;
+    border-radius: 6px;
+    transition: background .15s;
+  }
+
+  .nav-links a:hover { background: var(--blue-light); }
+
+  /* ══ HERO ══ */
+  .hero {
+    background: linear-gradient(140deg, var(--navy-dark) 0%, var(--navy) 55%, #2a5298 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 68px 40px 80px;
+    text-align: center;
+  }
+
+  .hero-asterisk-bg {
+    position: absolute;
+    right: -100px; bottom: -100px;
+    width: 480px; height: 480px;
+    opacity: .07;
+    pointer-events: none;
+  }
+
+  .hero-asterisk-bg2 {
+    position: absolute;
+    left: -80px; top: -80px;
+    width: 320px; height: 320px;
+    opacity: .05;
+    pointer-events: none;
+  }
+
+  .hero-klas {
+    display: inline-block;
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.25);
+    color: rgba(255,255,255,.9);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .hero h1 {
+    font-size: clamp(46px, 8vw, 80px);
+    font-weight: 900;
+    color: white;
+    line-height: 1;
+    letter-spacing: -.02em;
+    position: relative;
+  }
+
+  .hero h1 span { color: #7eb8f7; }
+
+  .hero-sub {
+    color: rgba(255,255,255,.7);
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 12px;
+    position: relative;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .wave { display:block; width:100%; height:52px; margin-bottom:-2px; }
+
+  /* ══ PILL NAV ══ */
+  .pill-nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 28px 24px 0;
+  }
+
+  .pill-nav a {
+    background: var(--white);
+    border: 2px solid var(--border);
+    color: var(--navy);
+    font-size: 13px;
+    font-weight: 800;
+    padding: 9px 20px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all .18s;
+  }
+
+  .pill-nav a:hover { background: var(--navy); border-color: var(--navy); color: white; }
+
+  /* ══ MAIN ══ */
+  main { max-width: 980px; margin: 0 auto; padding: 0 24px 80px; }
+
+  section { margin-top: 58px; scroll-margin-top: 80px; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--navy);
+    opacity: .45;
+    margin-bottom: 6px;
+  }
+
+  h2 { font-size: 30px; font-weight: 900; color: var(--navy-dark); margin-bottom: 20px; line-height: 1.1; }
+
+  /* navy card */
+  .dv-card {
+    background: var(--navy-card);
+    border-radius: 20px;
+    padding: 34px 38px;
+    color: white;
+  }
+
+  .dv-card p { font-size: 16px; line-height: 1.75; font-weight: 600; color: rgba(255,255,255,.88); }
+  .dv-card strong { color: #7eb8f7; font-weight: 800; }
+
+  /* white card */
+  .white-card {
+    background: var(--white);
+    border-radius: 18px;
+    padding: 28px 32px;
+    border: 2px solid var(--border);
+    box-shadow: 0 4px 16px rgba(27,58,107,.07);
+  }
+
+  .white-card h3 { font-size: 17px; font-weight: 800; color: var(--navy); margin-bottom: 12px; }
+  .white-card p, .white-card li { font-size: 15px; line-height: 1.7; color: #374151; font-weight: 600; }
+  .white-card ul { padding-left: 18px; }
+  .white-card li { margin-bottom: 6px; }
+
+  /* tip box */
+  .tip-box {
+    background: var(--blue-mid);
+    border-radius: 18px;
+    padding: 26px 32px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    margin-top: 16px;
+  }
+
+  .tip-icon {
+    background: rgba(255,255,255,.18);
+    font-size: 22px;
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .tip-box h3 { font-size: 15px; font-weight: 800; color: white; margin-bottom: 5px; }
+  .tip-box p { font-size: 14px; color: rgba(255,255,255,.85); line-height: 1.65; font-weight: 600; }
+
+  /* two col */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media(max-width:600px){ .two-col { grid-template-columns: 1fr; } }
+
+  /* structure box */
+  .structure-box {
+    background: var(--white);
+    border-radius: 18px;
+    padding: 30px;
+    border: 2px solid var(--border);
+    box-shadow: 0 4px 16px rgba(27,58,107,.07);
+  }
+
+  .structure-box p { font-size: 15px; line-height: 1.7; color: #374151; font-weight: 600; margin-bottom: 12px; }
+
+  .formula {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--blue-light);
+    border-radius: 12px;
+    padding: 14px 20px;
+    margin: 14px 0;
+    flex-wrap: wrap;
+  }
+
+  .formula-part {
+    background: var(--navy);
+    color: white;
+    padding: 7px 18px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  .formula-part.hl { background: var(--blue-mid); }
+  .formula-arrow { color: var(--muted); font-size: 20px; font-weight: 700; }
+
+  .ex-sentence-demo {
+    background: var(--blue-light);
+    border-left: 4px solid var(--navy);
+    padding: 10px 16px;
+    border-radius: 0 10px 10px 0;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 8px 0;
+    color: var(--text);
+  }
+
+  .ex-sentence-demo mark {
+    background: rgba(59,94,198,.18);
+    color: var(--navy-dark);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 900;
+  }
+
+  /* category cards */
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 14px;
+  }
+
+  .cat-card {
+    background: var(--navy-card);
+    border-radius: 18px;
+    padding: 24px 22px 20px;
+    color: white;
+    transition: transform .2s, box-shadow .2s;
+  }
+
+  .cat-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(27,58,107,.24); }
+  .cat-icon { font-size: 28px; margin-bottom: 10px; display: block; }
+  .cat-card h4 { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: rgba(255,255,255,.55); margin-bottom: 12px; }
+  .preps { display: flex; flex-wrap: wrap; gap: 6px; }
+  .prep-tag {
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.2);
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 3px 11px;
+    border-radius: 100px;
+  }
+
+  /* exercises */
+  .exercise-header { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:20px; }
+
+  .score-pill { background:var(--navy); color:white; padding:9px 22px; border-radius:100px; font-size:14px; font-weight:800; }
+  .score-pill span { color: #7eb8f7; }
+
+  .exercises { display:flex; flex-direction:column; gap:12px; }
+
+  .ex-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 20px 26px;
+    border: 2px solid var(--border);
+    box-shadow: 0 2px 8px rgba(27,58,107,.05);
+    transition: border-color .2s;
+  }
+
+  .ex-card.correct { border-color: var(--correct); background: rgba(34,160,107,.04); }
+  .ex-card.wrong   { border-color: var(--wrong);   background: rgba(217,48,37,.04);  }
+
+  .ex-sentence { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 13px; line-height: 1.5; }
+
+  .ex-sentence .blank {
+    display: inline-block;
+    min-width: 76px;
+    border-bottom: 3px solid var(--navy);
+    text-align: center;
+    color: var(--navy);
+    font-weight: 900;
+    margin: 0 3px;
+    padding: 0 6px;
+  }
+
+  .options { display:flex; gap:8px; flex-wrap:wrap; }
+
+  .opt-btn {
+    background: var(--blue-light);
+    border: 2px solid var(--border);
+    color: var(--navy);
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    padding: 7px 20px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all .15s;
+  }
+
+  .opt-btn:hover:not(:disabled) { background: var(--navy); border-color: var(--navy); color: white; }
+  .opt-btn.sel-ok  { background: var(--correct); border-color: var(--correct); color: white; }
+  .opt-btn.sel-err { background: var(--wrong);   border-color: var(--wrong);   color: white; }
+  .opt-btn.reveal  { background: rgba(34,160,107,.12); border-color: var(--correct); color: var(--correct); }
+  .opt-btn:disabled { cursor: default; }
+
+  .feedback { margin-top:10px; font-size:13px; font-weight:800; display:none; }
+  .feedback.show { display:flex; align-items:center; gap:5px; }
+  .feedback.ok  { color: var(--correct); }
+  .feedback.err { color: var(--wrong); }
+
+  /* Da Vinci pill button */
+  .dv-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    border: 2.5px solid var(--navy);
+    color: var(--navy);
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    padding: 10px 28px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all .2s;
+    margin-top: 22px;
+  }
+
+  .dv-btn:hover { background: var(--navy); color: white; }
+
+  /* footer */
+  footer {
+    background: var(--navy-dark);
+    color: rgba(255,255,255,.45);
+    text-align: center;
+    padding: 22px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  footer strong { color: rgba(255,255,255,.75); }
+
+  /* scroll fade */
+  .fade-in { opacity:0; transform:translateY(18px); transition: opacity .5s ease, transform .5s ease; }
+  .fade-in.visible { opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ══ TOP NAV ══ -->
+<nav class="topnav">
+  <a class="logo-wrap" href="#">
+    <svg class="dv-asterisk" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(50,50)">
+        <rect x="-7" y="-44" width="14" height="44" rx="3.5" fill="#1B3A6B" transform="rotate(0)"/>
+        <rect x="-7" y="-44" width="14" height="44" rx="3.5" fill="#1B3A6B" transform="rotate(45)"/>
+        <rect x="-7" y="-44" width="14" height="44" rx="3.5" fill="#1B3A6B" transform="rotate(90)"/>
+        <rect x="-7" y="-44" width="14" height="44" rx="3.5" fill="#1B3A6B" transform="rotate(135)"/>
+        <rect x="-7" y="-44" width="14" height="44" rx="3.5" fill="#1B3A6B" transform="rotate(180)"/>
+        <rect x="-7" y="-44" width="14" height="44" rx="3.5" fill="#1B3A6B" transform="rotate(225)"/>
+        <rect x="-7" y="-44" width="14" height="44" rx="3.5" fill="#1B3A6B" transform="rotate(270)"/>
+        <rect x="-7" y="-44" width="14" height="44" rx="3.5" fill="#1B3A6B" transform="rotate(315)"/>
+      </g>
+    </svg>
+    <div class="logo-text">
+      Da Vinci College
+      <small>Klas 2S · Woordsoorten</small>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <a href="#wat">Wat is het?</a>
+    <a href="#hoe">Hoe gebruik je het?</a>
+    <a href="#wanneer">Wanneer?</a>
+    <a href="#oefenen">Oefenen</a>
+  </ul>
+</nav>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <svg class="hero-asterisk-bg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(50,50)">
+      <rect x="-7" y="-47" width="14" height="47" rx="3" fill="white" transform="rotate(0)"/>
+      <rect x="-7" y="-47" width="14" height="47" rx="3" fill="white" transform="rotate(30)"/>
+      <rect x="-7" y="-47" width="14" height="47" rx="3" fill="white" transform="rotate(60)"/>
+      <rect x="-7" y="-47" width="14" height="47" rx="3" fill="white" transform="rotate(90)"/>
+      <rect x="-7" y="-47" width="14" height="47" rx="3" fill="white" transform="rotate(120)"/>
+      <rect x="-7" y="-47" width="14" height="47" rx="3" fill="white" transform="rotate(150)"/>
+      <rect x="-7" y="-47" width="14" height="47" rx="3" fill="white" transform="rotate(180)"/>
+      <rect x="-7" y="-47" width="14" height="47" rx="3" fill="white" transform="rotate(210)"/>
+      <rect x="-7" y="-47" width="14" height="47" rx="3" fill="white" transform="rotate(240)"/>
+      <rect x="-7" y="-47" width="14" height="47" rx="3" fill="white" transform="rotate(270)"/>
+      <rect x="-7" y="-47" width="14" height="47" rx="3" fill="white" transform="rotate(300)"/>
+      <rect x="-7" y="-47" width="14" height="47" rx="3" fill="white" transform="rotate(330)"/>
+    </g>
+  </svg>
+  <svg class="hero-asterisk-bg2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(50,50)">
+      <rect x="-7" y="-47" width="14" height="47" rx="3" fill="white" transform="rotate(0)"/>
+      <rect x="-7" y="-47" width="14" height="47" rx="3" fill="white" transform="rotate(45)"/>
+      <rect x="-7" y="-47" width="14" height="47" rx="3" fill="white" transform="rotate(90)"/>
+      <rect x="-7" y="-47" width="14" height="47" rx="3" fill="white" transform="rotate(135)"/>
+      <rect x="-7" y="-47" width="14" height="47" rx="3" fill="white" transform="rotate(180)"/>
+      <rect x="-7" y="-47" width="14" height="47" rx="3" fill="white" transform="rotate(225)"/>
+      <rect x="-7" y="-47" width="14" height="47" rx="3" fill="white" transform="rotate(270)"/>
+      <rect x="-7" y="-47" width="14" height="47" rx="3" fill="white" transform="rotate(315)"/>
+    </g>
+  </svg>
+
+  <div class="hero-klas">Presentatie · Woordsoorten · Klas 2S</div>
+  <h1>Voor<span>zetsels</span></h1>
+  <p class="hero-sub">Leer wat voorzetsels zijn, hoe en wanneer je ze gebruikt — en oefen met 15 zinnen.</p>
+</div>
+
+<!-- wave -->
+<svg class="wave" viewBox="0 0 1440 52" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0,0 C480,52 960,0 1440,36 L1440,52 L0,52 Z" fill="#D0DDEF"/>
+</svg>
+
+<!-- pill anchors -->
+<div class="pill-nav">
+  <a href="#wat">📖 Wat is het?</a>
+  <a href="#hoe">✏️ Hoe gebruik je het?</a>
+  <a href="#wanneer">🗂 Wanneer gebruik je het?</a>
+  <a href="#oefenen">🎯 Oefenzinnen</a>
+</div>
+
+<main>
+
+  <!-- ══ WAT ══ -->
+  <section id="wat" class="fade-in">
+    <div class="section-label">01 · Definitie</div>
+    <h2>Wat is een voorzetsel?</h2>
+
+    <div class="dv-card">
+      <p>Een <strong>voorzetsel</strong> is een klein woord dat de <strong>verhouding aangeeft</strong> tussen een zelfstandig naamwoord (of voornaamwoord) en de rest van de zin. Het staat bijna altijd <strong>vóór</strong> een zelfstandig naamwoord — vandaar de naam <strong>voor-zetsel</strong>.</p>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-icon">💡</div>
+      <div>
+        <h3>Geheugensteuntje</h3>
+        <p><em>"voor"</em> + <em>"zetsel"</em> = een woord dat je <strong>vóór</strong> een zelfstandig naamwoord <strong>zet</strong>. Voorbeeld: de kat zit <u>op</u> de mat — <em>op</em> is het voorzetsel dat aangeeft <em>waar</em> de kat zit.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ HOE ══ -->
+  <section id="hoe" class="fade-in">
+    <div class="section-label">02 · Gebruik</div>
+    <h2>Hoe gebruik je een voorzetsel?</h2>
+
+    <div class="structure-box">
+      <p>Een voorzetsel staat altijd <strong>vóór</strong> een zelfstandig naamwoord of voornaamwoord. Samen vormen ze een <strong>voorzetselgroep</strong>.</p>
+
+      <div class="formula">
+        <div class="formula-part hl">Voorzetsel</div>
+        <div class="formula-arrow">+</div>
+        <div class="formula-part">Zelfstandig naamwoord</div>
+        <div class="formula-arrow">=</div>
+        <div class="formula-part">Voorzetselgroep</div>
+      </div>
+
+      <p><strong>Voorbeelden:</strong></p>
+      <div class="ex-sentence-demo">De kat zit <mark>op</mark> de tafel. &nbsp;→&nbsp; <em>op de tafel</em> = voorzetselgroep</div>
+      <div class="ex-sentence-demo">Hij fietst <mark>naar</mark> school. &nbsp;→&nbsp; <em>naar school</em> = voorzetselgroep</div>
+      <div class="ex-sentence-demo">We eten <mark>om</mark> zes uur. &nbsp;→&nbsp; <em>om zes uur</em> = voorzetselgroep</div>
+    </div>
+  </section>
+
+  <!-- ══ WANNEER ══ -->
+  <section id="wanneer" class="fade-in">
+    <div class="section-label">03 · Soorten</div>
+    <h2>Wanneer gebruik je een voorzetsel?</h2>
+
+    <div class="cat-grid">
+      <div class="cat-card">
+        <span class="cat-icon">📍</span>
+        <h4>Plaats</h4>
+        <div class="preps">
+          <span class="prep-tag">in</span><span class="prep-tag">op</span><span class="prep-tag">aan</span><span class="prep-tag">bij</span><span class="prep-tag">naast</span><span class="prep-tag">voor</span><span class="prep-tag">achter</span><span class="prep-tag">onder</span><span class="prep-tag">boven</span><span class="prep-tag">tussen</span>
+        </div>
+      </div>
+      <div class="cat-card">
+        <span class="cat-icon">🧭</span>
+        <h4>Richting</h4>
+        <div class="preps">
+          <span class="prep-tag">naar</span><span class="prep-tag">van</span><span class="prep-tag">uit</span><span class="prep-tag">langs</span><span class="prep-tag">door</span><span class="prep-tag">tegen</span><span class="prep-tag">via</span>
+        </div>
+      </div>
+      <div class="cat-card">
+        <span class="cat-icon">🕐</span>
+        <h4>Tijd</h4>
+        <div class="preps">
+          <span class="prep-tag">om</span><span class="prep-tag">voor</span><span class="prep-tag">na</span><span class="prep-tag">tijdens</span><span class="prep-tag">tot</span><span class="prep-tag">vanaf</span><span class="prep-tag">sinds</span>
+        </div>
+      </div>
+      <div class="cat-card">
+        <span class="cat-icon">🤝</span>
+        <h4>Wijze / Manier</h4>
+        <div class="preps">
+          <span class="prep-tag">met</span><span class="prep-tag">zonder</span><span class="prep-tag">per</span><span class="prep-tag">door</span><span class="prep-tag">over</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:16px;">
+      <div class="white-card">
+        <h3>Vraagtruc: hoe herken je het?</h3>
+        <ul>
+          <li><strong>Waar?</strong> → plaatsvoorzetsel (in, op, aan…)</li>
+          <li><strong>Waarheen / waarvandaan?</strong> → richting (naar, van…)</li>
+          <li><strong>Wanneer / hoe laat?</strong> → tijdvoorzetsel (om, na…)</li>
+          <li><strong>Hoe / waarmee?</strong> → bijwoordelijk (met, zonder…)</li>
+        </ul>
+      </div>
+      <div class="white-card">
+        <h3>Vaste combinaties</h3>
+        <ul>
+          <li>denken <strong>aan</strong></li>
+          <li>wachten <strong>op</strong></li>
+          <li>houden <strong>van</strong></li>
+          <li>zorgen <strong>voor</strong></li>
+          <li>praten <strong>over</strong></li>
+          <li>beginnen <strong>met</strong></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ OEFENZINNEN ══ -->
+  <section id="oefenen" class="fade-in">
+    <div class="section-label">04 · Oefenen</div>
+    <div class="exercise-header">
+      <h2 style="margin-bottom:0;">Oefenzinnen</h2>
+      <div class="score-pill">Score: <span id="scoreVal">0</span> / <span id="totalVal">15</span></div>
+    </div>
+
+    <div class="exercises" id="exerciseContainer"></div>
+
+    <button class="dv-btn" onclick="resetAll()">↺ Opnieuw beginnen</button>
+  </section>
+
+</main>
+
+<footer>
+  <strong>Da Vinci College</strong> &nbsp;·&nbsp; Presentatie Woordsoorten 2S &nbsp;·&nbsp; Thema: Voorzetsels
+</footer>
+
+<script>
+const exercises = [
+  { sentence:"De kat zit ___ de tafel.",                blank:"op",      options:["op","in","naar","met"] },
+  { sentence:"Hij loopt ___ school.",                   blank:"naar",    options:["naar","op","om","bij"] },
+  { sentence:"We eten ___ zes uur.",                    blank:"om",      options:["om","voor","op","aan"] },
+  { sentence:"Ze wonen ___ Amsterdam.",                 blank:"in",      options:["in","bij","op","naar"] },
+  { sentence:"Het boek ligt ___ de stoel.",             blank:"onder",   options:["onder","op","naast","boven"] },
+  { sentence:"Ik ga ___ mijn vriend naar de film.",     blank:"met",     options:["met","voor","van","aan"] },
+  { sentence:"Ze staat ___ de deur.",                   blank:"naast",   options:["naast","in","achter","om"] },
+  { sentence:"Hij komt ___ huis.",                      blank:"van",     options:["van","bij","naar","op"] },
+  { sentence:"We lopen ___ het park.",                  blank:"door",    options:["door","langs","op","bij"] },
+  { sentence:"De fiets staat ___ de muur.",             blank:"tegen",   options:["tegen","op","bij","in"] },
+  { sentence:"Ze rijdt ___ het kanaal.",                blank:"langs",   options:["langs","door","bij","achter"] },
+  { sentence:"Hij staat ___ het huis.",                 blank:"achter",  options:["achter","voor","naast","in"] },
+  { sentence:"We werken ___ vijf uur.",                 blank:"tot",     options:["tot","om","voor","na"] },
+  { sentence:"___ de les begint iedereen te schrijven.",blank:"Na",      options:["Na","Voor","Tijdens","Om"] },
+  { sentence:"Hij denkt altijd ___ zijn vrienden.",     blank:"aan",     options:["aan","over","met","bij"] },
+];
+
+let score = 0;
+function shuffle(a){ return [...a].sort(()=>Math.random()-.5); }
+
+function build(){
+  const c = document.getElementById('exerciseContainer');
+  document.getElementById('totalVal').textContent = exercises.length;
+  c.innerHTML=''; score=0;
+  document.getElementById('scoreVal').textContent=0;
+  exercises.forEach((ex,i)=>{
+    const opts=shuffle(ex.options);
+    const disp=ex.sentence.replace('___',`<span class="blank" id="bl-${i}">___</span>`);
+    const card=document.createElement('div');
+    card.className='ex-card'; card.id=`card-${i}`;
+    card.innerHTML=`
+      <div class="ex-sentence">${i+1}. ${disp}</div>
+      <div class="options">${opts.map(o=>`<button class="opt-btn" onclick="check(${i},'${o}','${ex.blank}',this)">${o}</button>`).join('')}</div>
+      <div class="feedback" id="fb-${i}"></div>`;
+    c.appendChild(card);
+  });
+}
+
+function check(idx,chosen,correct,btn){
+  const card=document.getElementById(`card-${idx}`);
+  if(card.classList.contains('correct')||card.classList.contains('wrong')) return;
+  card.querySelectorAll('.opt-btn').forEach(b=>b.disabled=true);
+  const blank=document.getElementById(`bl-${idx}`);
+  const fb=document.getElementById(`fb-${idx}`);
+  blank.textContent=chosen;
+  if(chosen.toLowerCase()===correct.toLowerCase()){
+    card.classList.add('correct'); btn.classList.add('sel-ok');
+    fb.textContent='✓ Goed zo!'; fb.className='feedback show ok';
+    score++; document.getElementById('scoreVal').textContent=score;
+  } else {
+    card.classList.add('wrong'); btn.classList.add('sel-err');
+    card.querySelectorAll('.opt-btn').forEach(b=>{ if(b.textContent.toLowerCase()===correct.toLowerCase()) b.classList.add('reveal'); });
+    fb.innerHTML=`✗ Fout. Het juiste antwoord is: <strong>${correct}</strong>`;
+    fb.className='feedback show err';
+  }
+}
+
+function resetAll(){ build(); }
+build();
+
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:0.08});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth'}); }
+  });
+});
+</script>
+</body>
+</html>
