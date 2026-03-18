@@ -404,6 +404,108 @@
   /* scroll fade */
   .fade-in { opacity:0; transform:translateY(18px); transition: opacity .5s ease, transform .5s ease; }
   .fade-in.visible { opacity:1; transform:translateY(0); }
+
+  /* ══ HAMBURGER (mobile only) ══ */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 8px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2.5px;
+    background: var(--navy);
+    border-radius: 2px;
+    transition: all .3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  /* mobile drawer */
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: white;
+    padding: 12px 20px 20px;
+    border-top: 1px solid var(--border);
+    box-shadow: 0 8px 24px rgba(27,58,107,.12);
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: var(--navy);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 800;
+    padding: 13px 8px;
+    border-bottom: 1px solid var(--blue-light);
+    transition: color .15s;
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover { color: var(--blue-mid); }
+
+  /* ══ RESPONSIVE BREAKPOINTS ══ */
+  @media (max-width: 768px) {
+    /* nav */
+    .topnav { padding: 0 20px; height: 58px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .logo-text { font-size: 14px; }
+    .dv-asterisk { width: 34px; height: 34px; }
+
+    /* hero */
+    .hero { padding: 48px 20px 60px; }
+    .hero-sub { font-size: 14px; }
+
+    /* wave */
+    .wave { height: 36px; }
+
+    /* pill nav */
+    .pill-nav { padding: 20px 16px 0; gap: 8px; }
+    .pill-nav a { font-size: 12px; padding: 8px 14px; }
+
+    /* main */
+    main { padding: 0 16px 60px; }
+    section { margin-top: 44px; }
+    h2 { font-size: 24px; }
+
+    /* cards */
+    .dv-card { padding: 24px 22px; border-radius: 16px; }
+    .dv-card p { font-size: 15px; }
+    .white-card { padding: 22px 20px; }
+    .structure-box { padding: 22px 20px; }
+    .tip-box { padding: 20px; gap: 14px; flex-direction: row; align-items: flex-start; }
+    .tip-icon { width: 40px; height: 40px; font-size: 18px; flex-shrink: 0; }
+
+    /* formula wraps nicely */
+    .formula { padding: 12px 14px; gap: 8px; }
+    .formula-part { font-size: 12px; padding: 6px 14px; }
+
+    /* cat grid: 2 columns on tablet, 1 on small */
+    .cat-grid { grid-template-columns: 1fr 1fr; }
+
+    /* exercise cards */
+    .ex-card { padding: 18px 18px; }
+    .ex-sentence { font-size: 15px; }
+    .opt-btn { font-size: 13px; padding: 7px 16px; }
+
+    /* score pill */
+    .score-pill { font-size: 13px; padding: 8px 16px; }
+    .exercise-header { flex-direction: row; align-items: center; }
+  }
+
+  @media (max-width: 400px) {
+    .cat-grid { grid-template-columns: 1fr; }
+    .hero { padding: 40px 16px 52px; }
+    .pill-nav a { font-size: 11px; padding: 7px 12px; }
+    .two-col { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -435,7 +537,19 @@
     <a href="#wanneer">Wanneer?</a>
     <a href="#oefenen">Oefenen</a>
   </ul>
+
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- mobile drawer -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#wat" onclick="closeMobile()">📖 Wat is het?</a>
+  <a href="#hoe" onclick="closeMobile()">✏️ Hoe gebruik je het?</a>
+  <a href="#wanneer" onclick="closeMobile()">🗂 Wanneer gebruik je het?</a>
+  <a href="#oefenen" onclick="closeMobile()">🎯 Oefenzinnen</a>
+</div>
 
 <!-- ══ HERO ══ -->
 <div class="hero">
@@ -609,6 +723,18 @@
 </footer>
 
 <script>
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+function closeMobile() {
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+}
+
 const exercises = [
   { sentence:"De kat zit ___ de tafel.",                blank:"op",      options:["op","in","naar","met"] },
   { sentence:"Hij loopt ___ school.",                   blank:"naar",    options:["naar","op","om","bij"] },
