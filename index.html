@@ -401,7 +401,73 @@
 
   footer strong { color: rgba(255,255,255,.75); }
 
-  /* scroll fade */
+  /* ══ GAME GRID ══ */
+  .game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+  }
+
+  .game-card {
+    background: var(--white);
+    border-radius: 18px;
+    border: 2px solid var(--border);
+    box-shadow: 0 4px 16px rgba(27,58,107,.07);
+    overflow: hidden;
+    transition: border-color .2s;
+  }
+
+  .game-card.gc-correct { border-color: var(--correct); }
+  .game-card.gc-wrong   { border-color: var(--wrong);   }
+
+  .game-scene {
+    width: 100%;
+    display: block;
+    background: #E8F0FA;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .game-body { padding: 18px 20px; }
+
+  .game-question {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--navy-dark);
+    margin-bottom: 14px;
+    line-height: 1.4;
+  }
+
+  .game-question span { color: var(--blue-mid); }
+
+  .game-options { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  .game-btn {
+    background: var(--blue-light);
+    border: 2px solid var(--border);
+    color: var(--navy);
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    padding: 7px 18px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all .15s;
+  }
+
+  .game-btn:hover:not(:disabled) { background: var(--navy); border-color: var(--navy); color: white; }
+  .game-btn.gb-ok  { background: var(--correct); border-color: var(--correct); color: white; }
+  .game-btn.gb-err { background: var(--wrong);   border-color: var(--wrong);   color: white; }
+  .game-btn.gb-rev { background: rgba(34,160,107,.12); border-color: var(--correct); color: var(--correct); }
+  .game-btn:disabled { cursor: default; }
+
+  .game-feedback { margin-top: 10px; font-size: 13px; font-weight: 800; display: none; }
+  .game-feedback.show { display: flex; align-items: center; gap: 5px; }
+  .game-feedback.ok  { color: var(--correct); }
+  .game-feedback.err { color: var(--wrong); }
+
+  @media(max-width:600px){
+    .game-grid { grid-template-columns: 1fr; }
+  }
   .fade-in { opacity:0; transform:translateY(18px); transition: opacity .5s ease, transform .5s ease; }
   .fade-in.visible { opacity:1; transform:translateY(0); }
 
@@ -527,7 +593,7 @@
     </svg>
     <div class="logo-text">
       Da Vinci College
-      <small>Klas 2S · Woordsoorten</small>
+      <small>Klas 2 VWO · Woordsoorten</small>
     </div>
   </a>
 
@@ -549,6 +615,7 @@
   <a href="#hoe" onclick="closeMobile()">✏️ Hoe gebruik je het?</a>
   <a href="#wanneer" onclick="closeMobile()">🗂 Wanneer gebruik je het?</a>
   <a href="#oefenen" onclick="closeMobile()">🎯 Oefenzinnen</a>
+  <a href="#raadspel" onclick="closeMobile()">🎨 Raad het voorzetsel</a>
 </div>
 
 <!-- ══ HERO ══ -->
@@ -582,9 +649,9 @@
     </g>
   </svg>
 
-  <div class="hero-klas">Presentatie · Woordsoorten · Klas 2S</div>
+  <div class="hero-klas">Presentatie · Woordsoorten · 2 VWO</div>
   <h1>Voor<span>zetsels</span></h1>
-  <p class="hero-sub">Leer wat voorzetsels zijn, hoe en wanneer je ze gebruikt — en oefen met 15 zinnen.</p>
+  <p class="hero-sub">Definitie, functie en soorten — inclusief vaste voorzetsels, oorzaak &amp; reden, en uitdagende oefeningen op VWO-niveau.</p>
 </div>
 
 <!-- wave -->
@@ -598,6 +665,7 @@
   <a href="#hoe">✏️ Hoe gebruik je het?</a>
   <a href="#wanneer">🗂 Wanneer gebruik je het?</a>
   <a href="#oefenen">🎯 Oefenzinnen</a>
+  <a href="#raadspel">🎨 Raad het voorzetsel</a>
 </div>
 
 <main>
@@ -608,44 +676,76 @@
     <h2>Wat is een voorzetsel?</h2>
 
     <div class="dv-card">
-      <p>Een <strong>voorzetsel</strong> is een klein woord dat de <strong>verhouding aangeeft</strong> tussen een zelfstandig naamwoord (of voornaamwoord) en de rest van de zin. Het staat bijna altijd <strong>vóór</strong> een zelfstandig naamwoord — vandaar de naam <strong>voor-zetsel</strong>.</p>
+      <p>Een <strong>voorzetsel</strong> is een <strong>onveranderlijk</strong> woord dat een <strong>relatie legt</strong> tussen een zelfstandig naamwoord of voornaamwoord en de rest van de zin. Het voorzetsel vormt samen met zijn <strong>kernwoord</strong> (een zelfstandig naamwoord, voornaamwoord of bijwoord) een <strong>voorzetselgroep</strong>, ook wel <strong>voorzetselconstituent</strong> of <strong>bepaling</strong> genoemd. Voorzetsels zijn <em>onveranderlijk</em>: ze worden nooit verbogen en hebben geen meervoud.</p>
+    </div>
+
+    <div class="two-col" style="margin-top:16px;">
+      <div class="white-card">
+        <h3>Kernkenmerken</h3>
+        <ul>
+          <li>Altijd <strong>onveranderlijk</strong> — geen verbuiging of meervoud</li>
+          <li>Staat <strong>vóór</strong> het kernwoord (vandaar: voor-zetsel)</li>
+          <li>Vormt met het kernwoord een <strong>bepaling</strong> in de zin</li>
+          <li>Kan <strong>niet</strong> als zelfstandig zinsdeel fungeren</li>
+          <li>Soms <strong>versmolten</strong> met het lidwoord: <em>in + het = in het</em> of in spreektaal <em>in 't</em></li>
+        </ul>
+      </div>
+      <div class="white-card">
+        <h3>Voorzetsel of bijwoord?</h3>
+        <p>Let op: sommige woorden zijn <em>zowel</em> voorzetsel als bijwoord, afhankelijk van de context.</p>
+        <ul>
+          <li><em>Hij staat <strong>voor</strong>.</em> → bijwoord (geen kernwoord erna)</li>
+          <li><em>Hij staat <strong>voor</strong> de deur.</em> → voorzetsel (+ kernwoord)</li>
+          <li><em>Ze gaat <strong>binnen</strong>.</em> → bijwoord</li>
+          <li><em>Ze wacht <strong>binnen</strong> de school.</em> → voorzetsel</li>
+        </ul>
+      </div>
     </div>
 
     <div class="tip-box">
       <div class="tip-icon">💡</div>
       <div>
-        <h3>Geheugensteuntje</h3>
-        <p><em>"voor"</em> + <em>"zetsel"</em> = een woord dat je <strong>vóór</strong> een zelfstandig naamwoord <strong>zet</strong>. Voorbeeld: de kat zit <u>op</u> de mat — <em>op</em> is het voorzetsel dat aangeeft <em>waar</em> de kat zit.</p>
+        <h3>Sneltest: is het een voorzetsel?</h3>
+        <p>Stel de vraag: staat het woord <strong>vóór een zelfstandig naamwoord of voornaamwoord</strong> en geeft het een relatie aan? Dan is het een voorzetsel. Kun je het woord weglaten zonder dat de zin grammaticaal onjuist wordt, maar verlies je wél betekenis? Dan heb je een voorzetselgroep als <em>bepaling</em> gevonden.</p>
       </div>
     </div>
   </section>
 
   <!-- ══ HOE ══ -->
   <section id="hoe" class="fade-in">
-    <div class="section-label">02 · Gebruik</div>
+    <div class="section-label">02 · Gebruik &amp; Functie</div>
     <h2>Hoe gebruik je een voorzetsel?</h2>
 
     <div class="structure-box">
-      <p>Een voorzetsel staat altijd <strong>vóór</strong> een zelfstandig naamwoord of voornaamwoord. Samen vormen ze een <strong>voorzetselgroep</strong>.</p>
+      <p>Een voorzetsel staat <strong>altijd vóór zijn kernwoord</strong> en vormt daarmee een <strong>voorzetselgroep</strong>. Deze groep fungeert in de zin als een <strong>bepaling</strong> — hij voegt informatie toe aan het gezegde of het onderwerp, maar is geen verplicht zinsdeel.</p>
 
       <div class="formula">
         <div class="formula-part hl">Voorzetsel</div>
         <div class="formula-arrow">+</div>
-        <div class="formula-part">Zelfstandig naamwoord</div>
+        <div class="formula-part">Kernwoord (zn./vnw.)</div>
         <div class="formula-arrow">=</div>
-        <div class="formula-part">Voorzetselgroep</div>
+        <div class="formula-part">Voorzetselgroep / Bepaling</div>
       </div>
 
-      <p><strong>Voorbeelden:</strong></p>
-      <div class="ex-sentence-demo">De kat zit <mark>op</mark> de tafel. &nbsp;→&nbsp; <em>op de tafel</em> = voorzetselgroep</div>
-      <div class="ex-sentence-demo">Hij fietst <mark>naar</mark> school. &nbsp;→&nbsp; <em>naar school</em> = voorzetselgroep</div>
-      <div class="ex-sentence-demo">We eten <mark>om</mark> zes uur. &nbsp;→&nbsp; <em>om zes uur</em> = voorzetselgroep</div>
+      <p><strong>Analysevoorbeelden:</strong></p>
+      <div class="ex-sentence-demo">De leerling schrijft <mark>in</mark> zijn schrift. &nbsp;→&nbsp; <em>in zijn schrift</em> = plaatsbepaling</div>
+      <div class="ex-sentence-demo">Hij arriveerde <mark>na</mark> de pauze met een smoes. &nbsp;→&nbsp; <em>na de pauze</em> = tijdsbepaling</div>
+      <div class="ex-sentence-demo">Ze slaagde <mark>dankzij</mark> haar doorzettingsvermogen. &nbsp;→&nbsp; <em>dankzij haar doorzettingsvermogen</em> = oorzaakbepaling</div>
+      <div class="ex-sentence-demo">Hij vertelde het <mark>met</mark> grote overtuiging. &nbsp;→&nbsp; <em>met grote overtuiging</em> = bepaling van gesteldheid</div>
+    </div>
+
+    <div class="tip-box" style="margin-top:16px;">
+      <div class="tip-icon">⚠️</div>
+      <div>
+        <h3>Valkuil: meerdere bepalingen in één zin</h3>
+        <p>Een zin kan meerdere voorzetselgroepen bevatten. Analyseer ze elk apart: <em>"Hij reed <strong>na</strong> schooltijd <strong>langs</strong> het kanaal <strong>naar</strong> huis."</em> — hier zijn drie afzonderlijke voorzetselgroepen: tijds-, plaats- en richtingsbepaling.</p>
+      </div>
     </div>
   </section>
 
   <!-- ══ WANNEER ══ -->
   <section id="wanneer" class="fade-in">
-    <div class="section-label">03 · Soorten</div>
+    <div class="section-label">03 · Soorten &amp; Functies</div>
     <h2>Wanneer gebruik je een voorzetsel?</h2>
 
     <div class="cat-grid">
@@ -653,51 +753,60 @@
         <span class="cat-icon">📍</span>
         <h4>Plaats</h4>
         <div class="preps">
-          <span class="prep-tag">in</span><span class="prep-tag">op</span><span class="prep-tag">aan</span><span class="prep-tag">bij</span><span class="prep-tag">naast</span><span class="prep-tag">voor</span><span class="prep-tag">achter</span><span class="prep-tag">onder</span><span class="prep-tag">boven</span><span class="prep-tag">tussen</span>
+          <span class="prep-tag">in</span><span class="prep-tag">op</span><span class="prep-tag">aan</span><span class="prep-tag">bij</span><span class="prep-tag">naast</span><span class="prep-tag">voor</span><span class="prep-tag">achter</span><span class="prep-tag">onder</span><span class="prep-tag">boven</span><span class="prep-tag">tussen</span><span class="prep-tag">tegenover</span><span class="prep-tag">binnen</span><span class="prep-tag">buiten</span>
         </div>
       </div>
       <div class="cat-card">
         <span class="cat-icon">🧭</span>
         <h4>Richting</h4>
         <div class="preps">
-          <span class="prep-tag">naar</span><span class="prep-tag">van</span><span class="prep-tag">uit</span><span class="prep-tag">langs</span><span class="prep-tag">door</span><span class="prep-tag">tegen</span><span class="prep-tag">via</span>
+          <span class="prep-tag">naar</span><span class="prep-tag">van</span><span class="prep-tag">uit</span><span class="prep-tag">langs</span><span class="prep-tag">door</span><span class="prep-tag">tegen</span><span class="prep-tag">via</span><span class="prep-tag">voorbij</span><span class="prep-tag">richting</span>
         </div>
       </div>
       <div class="cat-card">
         <span class="cat-icon">🕐</span>
         <h4>Tijd</h4>
         <div class="preps">
-          <span class="prep-tag">om</span><span class="prep-tag">voor</span><span class="prep-tag">na</span><span class="prep-tag">tijdens</span><span class="prep-tag">tot</span><span class="prep-tag">vanaf</span><span class="prep-tag">sinds</span>
+          <span class="prep-tag">om</span><span class="prep-tag">voor</span><span class="prep-tag">na</span><span class="prep-tag">tijdens</span><span class="prep-tag">tot</span><span class="prep-tag">vanaf</span><span class="prep-tag">sinds</span><span class="prep-tag">gedurende</span><span class="prep-tag">tegen</span>
+        </div>
+      </div>
+      <div class="cat-card">
+        <span class="cat-icon">⚡</span>
+        <h4>Oorzaak / Reden</h4>
+        <div class="preps">
+          <span class="prep-tag">door</span><span class="prep-tag">vanwege</span><span class="prep-tag">wegens</span><span class="prep-tag">dankzij</span><span class="prep-tag">ondanks</span><span class="prep-tag">door middel van</span>
         </div>
       </div>
       <div class="cat-card">
         <span class="cat-icon">🤝</span>
         <h4>Wijze / Manier</h4>
         <div class="preps">
-          <span class="prep-tag">met</span><span class="prep-tag">zonder</span><span class="prep-tag">per</span><span class="prep-tag">door</span><span class="prep-tag">over</span>
+          <span class="prep-tag">met</span><span class="prep-tag">zonder</span><span class="prep-tag">per</span><span class="prep-tag">als</span><span class="prep-tag">in plaats van</span><span class="prep-tag">conform</span>
         </div>
       </div>
     </div>
 
     <div class="two-col" style="margin-top:16px;">
       <div class="white-card">
-        <h3>Vraagtruc: hoe herken je het?</h3>
+        <h3>Analysetruc: stel de juiste vraag</h3>
         <ul>
-          <li><strong>Waar?</strong> → plaatsvoorzetsel (in, op, aan…)</li>
-          <li><strong>Waarheen / waarvandaan?</strong> → richting (naar, van…)</li>
-          <li><strong>Wanneer / hoe laat?</strong> → tijdvoorzetsel (om, na…)</li>
-          <li><strong>Hoe / waarmee?</strong> → bijwoordelijk (met, zonder…)</li>
+          <li><strong>Waar? / Waar bevindt zich…?</strong> → plaatsbepaling</li>
+          <li><strong>Waarheen? / Waarvandaan?</strong> → richtingsbepaling</li>
+          <li><strong>Wanneer? / Hoe lang? / Hoe laat?</strong> → tijdsbepaling</li>
+          <li><strong>Waardoor? / Vanwege wat?</strong> → oorzaakbepaling</li>
+          <li><strong>Hoe? / Op welke manier? / Waarmee?</strong> → bepaling van gesteldheid</li>
         </ul>
       </div>
       <div class="white-card">
-        <h3>Vaste combinaties</h3>
+        <h3>Vaste voorzetsels bij werkwoorden</h3>
+        <p style="margin-bottom:10px;">Deze combinaties moet je uit het hoofd kennen — ze zijn niet logisch af te leiden:</p>
         <ul>
-          <li>denken <strong>aan</strong></li>
-          <li>wachten <strong>op</strong></li>
-          <li>houden <strong>van</strong></li>
-          <li>zorgen <strong>voor</strong></li>
-          <li>praten <strong>over</strong></li>
-          <li>beginnen <strong>met</strong></li>
+          <li>denken <strong>aan</strong> / nadenken <strong>over</strong></li>
+          <li>wachten <strong>op</strong> / hopen <strong>op</strong></li>
+          <li>houden <strong>van</strong> / profiteren <strong>van</strong></li>
+          <li>zorgen <strong>voor</strong> / verantwoordelijk <strong>voor</strong></li>
+          <li>beginnen <strong>met</strong> / ophouden <strong>met</strong></li>
+          <li>lijden <strong>aan</strong> / klagen <strong>over</strong></li>
         </ul>
       </div>
     </div>
@@ -714,6 +823,19 @@
     <div class="exercises" id="exerciseContainer"></div>
 
     <button class="dv-btn" onclick="resetAll()">↺ Opnieuw beginnen</button>
+  </section>
+
+  <!-- ══ DOE-OPDRACHT: RAAD HET VOORZETSEL ══ -->
+  <section id="raadspel" class="fade-in">
+    <div class="section-label">05 · Doe-opdracht</div>
+    <div class="exercise-header">
+      <h2 style="margin-bottom:0;">🎨 Raad het voorzetsel!</h2>
+      <div class="score-pill">Score: <span id="gscore">0</span> / <span id="gtotal">8</span></div>
+    </div>
+    <p style="font-size:15px;font-weight:600;color:#374151;margin-bottom:22px;">Kijk goed naar de afbeelding en de zin. Kies het juiste voorzetsel — let ook op het <strong>soort bepaling</strong> dat het vormt!</p>
+
+    <div class="game-grid" id="gameGrid"></div>
+    <button class="dv-btn" onclick="buildGame()">↺ Opnieuw beginnen</button>
   </section>
 
 </main>
@@ -736,21 +858,21 @@ function closeMobile() {
 }
 
 const exercises = [
-  { sentence:"De kat zit ___ de tafel.",                blank:"op",      options:["op","in","naar","met"] },
-  { sentence:"Hij loopt ___ school.",                   blank:"naar",    options:["naar","op","om","bij"] },
-  { sentence:"We eten ___ zes uur.",                    blank:"om",      options:["om","voor","op","aan"] },
-  { sentence:"Ze wonen ___ Amsterdam.",                 blank:"in",      options:["in","bij","op","naar"] },
-  { sentence:"Het boek ligt ___ de stoel.",             blank:"onder",   options:["onder","op","naast","boven"] },
-  { sentence:"Ik ga ___ mijn vriend naar de film.",     blank:"met",     options:["met","voor","van","aan"] },
-  { sentence:"Ze staat ___ de deur.",                   blank:"naast",   options:["naast","in","achter","om"] },
-  { sentence:"Hij komt ___ huis.",                      blank:"van",     options:["van","bij","naar","op"] },
-  { sentence:"We lopen ___ het park.",                  blank:"door",    options:["door","langs","op","bij"] },
-  { sentence:"De fiets staat ___ de muur.",             blank:"tegen",   options:["tegen","op","bij","in"] },
-  { sentence:"Ze rijdt ___ het kanaal.",                blank:"langs",   options:["langs","door","bij","achter"] },
-  { sentence:"Hij staat ___ het huis.",                 blank:"achter",  options:["achter","voor","naast","in"] },
-  { sentence:"We werken ___ vijf uur.",                 blank:"tot",     options:["tot","om","voor","na"] },
-  { sentence:"___ de les begint iedereen te schrijven.",blank:"Na",      options:["Na","Voor","Tijdens","Om"] },
-  { sentence:"Hij denkt altijd ___ zijn vrienden.",     blank:"aan",     options:["aan","over","met","bij"] },
+  { sentence:"De minister sprak ___ grote overtuiging over de nieuwe wet.",          blank:"met",      options:["met","in","van","door"] },
+  { sentence:"___ het slechte weer werd de wedstrijd afgelast.",                     blank:"Vanwege",  options:["Vanwege","Ondanks","Tijdens","Dankzij"] },
+  { sentence:"Hij slaagde voor het examen ___ zijn geringe voorbereiding.",          blank:"ondanks",  options:["ondanks","vanwege","dankzij","wegens"] },
+  { sentence:"De leerlingen verzamelden zich ___ het lokaal van mevrouw De Wit.",    blank:"voor",     options:["voor","bij","naast","tegenover"] },
+  { sentence:"Ze nadenkt al weken ___ haar studiekeuze.",                            blank:"over",     options:["over","aan","bij","op"] },
+  { sentence:"Het rapport moest ___ vrijdag ingeleverd zijn.",                       blank:"voor",     options:["voor","op","tot","na"] },
+  { sentence:"De directeur reageerde ___ grote zorg op de uitkomsten.",              blank:"met",      options:["met","op","in","over"] },
+  { sentence:"___ de pauze liep iedereen naar de kantine.",                          blank:"Na",       options:["Na","Tijdens","Voor","Gedurende"] },
+  { sentence:"De stad heeft veel te bieden ___ het gebied van kunst en cultuur.",    blank:"op",       options:["op","in","aan","over"] },
+  { sentence:"Ze klommen ___ de heuvel om het uitzicht te bewonderen.",             blank:"via",      options:["via","langs","door","over"] },
+  { sentence:"Hij wacht al maanden ___ een reactie van de universiteit.",            blank:"op",       options:["op","naar","voor","aan"] },
+  { sentence:"___ haar doorzettingsvermogen behaalde ze een uitstekend resultaat.",  blank:"Dankzij",  options:["Dankzij","Wegens","Ondanks","Vanwege"] },
+  { sentence:"De vergadering duurt ___ negen uur 's ochtends tot laat in de middag.",blank:"van",      options:["van","vanaf","tussen","tijdens"] },
+  { sentence:"Hij is verantwoordelijk ___ de organisatie van het schoolfeest.",      blank:"voor",     options:["voor","over","aan","bij"] },
+  { sentence:"De trein reed ___ het station ___ Utrecht richting Amsterdam.",         blank:"via",      options:["via","door","langs","naar"] },
 ];
 
 let score = 0;
@@ -783,7 +905,7 @@ function check(idx,chosen,correct,btn){
   blank.textContent=chosen;
   if(chosen.toLowerCase()===correct.toLowerCase()){
     card.classList.add('correct'); btn.classList.add('sel-ok');
-    fb.textContent='✓ Goed zo!'; fb.className='feedback show ok';
+    fb.textContent='✓ Correct!'; fb.className='feedback show ok';
     score++; document.getElementById('scoreVal').textContent=score;
   } else {
     card.classList.add('wrong'); btn.classList.add('sel-err');
@@ -795,6 +917,293 @@ function check(idx,chosen,correct,btn){
 
 function resetAll(){ build(); }
 build();
+
+// ══ RAAD HET VOORZETSEL GAME ══
+const scenes = [
+  {
+    answer: "op",
+    options: ["op","aan","in","boven"],
+    question: "De laptop ligt ___ <span>het bureau</span>. Welke bepaling is dit?",
+    hint: "De laptop ligt op het bureau → plaatsbepaling (op = plaatsvoorzetsel).",
+    svg: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg" class="game-scene">
+      <rect width="280" height="180" fill="#E8F0FA"/>
+      <rect x="0" y="158" width="280" height="22" fill="#c8b89a"/>
+      <rect x="40" y="100" width="200" height="14" rx="5" fill="#a0724a"/>
+      <rect x="55" y="114" width="12" height="44" rx="4" fill="#7a5230"/>
+      <rect x="213" y="114" width="12" height="44" rx="4" fill="#7a5230"/>
+      <!-- laptop base -->
+      <rect x="88" y="78" width="104" height="26" rx="6" fill="#374151"/>
+      <!-- laptop screen -->
+      <path d="M96,78 L96,42 Q96,36 102,36 L178,36 Q184,36 184,42 L184,78 Z" fill="#1B3A6B"/>
+      <rect x="100" y="40" width="80" height="34" rx="3" fill="#7eb8f7" opacity=".6"/>
+      <!-- code lines on screen -->
+      <rect x="104" y="45" width="40" height="3" rx="1.5" fill="white" opacity=".6"/>
+      <rect x="104" y="52" width="60" height="3" rx="1.5" fill="white" opacity=".4"/>
+      <rect x="104" y="59" width="30" height="3" rx="1.5" fill="white" opacity=".5"/>
+      <!-- hinge -->
+      <rect x="95" y="76" width="90" height="5" rx="2.5" fill="#555"/>
+    </svg>`
+  },
+  {
+    answer: "vanwege",
+    options: ["vanwege","ondanks","dankzij","tijdens"],
+    question: "___ <span>de storm</span> werd de les afgelast. Wat voor bepaling is dit?",
+    hint: "Vanwege de storm = oorzaakbepaling. Let op: 'ondanks' en 'dankzij' hebben een andere betekenis!",
+    svg: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg" class="game-scene">
+      <rect width="280" height="180" fill="#b0c8e0"/>
+      <!-- stormy sky -->
+      <ellipse cx="80" cy="55" rx="65" ry="38" fill="#7a8fa8"/>
+      <ellipse cx="160" cy="45" rx="75" ry="40" fill="#8899b0"/>
+      <ellipse cx="230" cy="60" rx="55" ry="32" fill="#6a7f98"/>
+      <!-- lightning -->
+      <polyline points="148,58 138,88 148,88 134,118" stroke="#f5c542" stroke-width="4" fill="none" stroke-linejoin="round"/>
+      <!-- rain drops -->
+      <line x1="50" y1="105" x2="44" y2="122" stroke="#7eb8f7" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="80" y1="112" x2="74" y2="129" stroke="#7eb8f7" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="110" y1="100" x2="104" y2="117" stroke="#7eb8f7" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="175" y1="108" x2="169" y2="125" stroke="#7eb8f7" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="210" y1="100" x2="204" y2="117" stroke="#7eb8f7" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="240" y1="112" x2="234" y2="129" stroke="#7eb8f7" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="65" y1="128" x2="59" y2="145" stroke="#7eb8f7" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="195" y1="124" x2="189" y2="141" stroke="#7eb8f7" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- ground / grass -->
+      <rect x="0" y="148" width="280" height="32" fill="#5aaa5a"/>
+      <!-- cancelled school sign -->
+      <rect x="108" y="125" width="64" height="30" rx="5" fill="white"/>
+      <line x1="112" y1="129" x2="168" y2="151" stroke="#e53e3e" stroke-width="3"/>
+      <line x1="168" y1="129" x2="112" y2="151" stroke="#e53e3e" stroke-width="3"/>
+    </svg>`
+  },
+  {
+    answer: "dankzij",
+    options: ["dankzij","vanwege","ondanks","door"],
+    question: "___ <span>haar inzet</span> behaalde ze een 9. Positief of negatief gevolg?",
+    hint: "Dankzij = positief gevolg. Wegens/vanwege = neutraal of negatief gevolg.",
+    svg: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg" class="game-scene">
+      <rect width="280" height="180" fill="#E8F0FA"/>
+      <!-- report card -->
+      <rect x="72" y="28" width="136" height="130" rx="10" fill="white" stroke="#c0cfe8" stroke-width="2"/>
+      <!-- header bar -->
+      <rect x="72" y="28" width="136" height="28" rx="10" fill="#1B3A6B"/>
+      <rect x="72" y="44" width="136" height="12" fill="#1B3A6B"/>
+      <text x="140" y="48" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="800" fill="white">RAPPORT</text>
+      <!-- grade lines -->
+      <rect x="88" y="68" width="60" height="8" rx="3" fill="#e8f0fa"/>
+      <rect x="88" y="82" width="60" height="8" rx="3" fill="#e8f0fa"/>
+      <rect x="88" y="96" width="60" height="8" rx="3" fill="#e8f0fa"/>
+      <rect x="88" y="110" width="60" height="8" rx="3" fill="#e8f0fa"/>
+      <!-- grades -->
+      <text x="162" y="76" font-family="Nunito,sans-serif" font-size="11" font-weight="800" fill="#22a06b">8</text>
+      <text x="162" y="90" font-family="Nunito,sans-serif" font-size="11" font-weight="800" fill="#22a06b">7</text>
+      <text x="162" y="104" font-family="Nunito,sans-serif" font-size="11" font-weight="800" fill="#22a06b">8</text>
+      <!-- big 9 -->
+      <text x="140" y="148" text-anchor="middle" font-family="Nunito,sans-serif" font-size="38" font-weight="900" fill="#22a06b">9</text>
+      <!-- star -->
+      <text x="178" y="148" font-family="Nunito,sans-serif" font-size="22" fill="#f5c542">★</text>
+    </svg>`
+  },
+  {
+    answer: "ondanks",
+    options: ["ondanks","dankzij","vanwege","wegens"],
+    question: "___ <span>zijn hoofdpijn</span> deed hij toch mee aan de toets.",
+    hint: "Ondanks = iets gebeurt terwijl je het tegenovergestelde verwacht (tegenstelling).",
+    svg: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg" class="game-scene">
+      <rect width="280" height="180" fill="#E8F0FA"/>
+      <!-- desk -->
+      <rect x="44" y="110" width="192" height="12" rx="5" fill="#a0724a"/>
+      <rect x="58" y="122" width="11" height="40" rx="4" fill="#7a5230"/>
+      <rect x="211" y="122" width="11" height="40" rx="4" fill="#7a5230"/>
+      <!-- sitting person -->
+      <!-- body -->
+      <rect x="120" y="75" width="40" height="40" rx="10" fill="#3B5EC6"/>
+      <!-- head -->
+      <circle cx="140" cy="60" r="20" fill="#f5c09a"/>
+      <!-- pained expression -->
+      <ellipse cx="131" cy="57" rx="3" ry="3.5" fill="#1a2840"/>
+      <ellipse cx="149" cy="57" rx="3" ry="3.5" fill="#1a2840"/>
+      <path d="M132,68 Q140,64 148,68" stroke="#a06040" stroke-width="2" fill="none"/>
+      <!-- squiggles on head (headache) -->
+      <path d="M122,40 Q128,34 134,40 Q140,46 146,40" stroke="#e53e3e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <!-- test paper on desk -->
+      <rect x="110" y="90" width="60" height="28" rx="4" fill="white" stroke="#c0cfe8" stroke-width="1.5"/>
+      <rect x="116" y="96" width="35" height="3" rx="1.5" fill="#c0cfe8"/>
+      <rect x="116" y="103" width="28" height="3" rx="1.5" fill="#c0cfe8"/>
+      <text x="155" y="114" font-family="Nunito,sans-serif" font-size="12" font-weight="900" fill="#22a06b">✓</text>
+    </svg>`
+  },
+  {
+    answer: "tegenover",
+    options: ["tegenover","naast","voor","bij"],
+    question: "De bibliotheek bevindt zich ___ <span>het gemeentehuis</span>.",
+    hint: "Tegenover = aan de overkant van. Let op het verschil met 'naast' (ernaast) en 'voor' (vóór).",
+    svg: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg" class="game-scene">
+      <rect width="280" height="180" fill="#c8e8f8"/>
+      <rect x="0" y="148" width="280" height="32" fill="#888"/>
+      <!-- road stripes -->
+      <rect x="126" y="148" width="28" height="8" rx="2" fill="white" opacity=".6"/>
+      <!-- left building: library -->
+      <rect x="10" y="58" width="100" height="94" rx="4" fill="#d4bc80"/>
+      <rect x="10" y="58" width="100" height="18" rx="4" fill="#c8a858"/>
+      <text x="60" y="72" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" font-weight="800" fill="#1B3A6B">BIBLIOTHEEK</text>
+      <!-- windows lib -->
+      <rect x="22" y="84" width="22" height="20" rx="3" fill="#7eb8f7"/>
+      <rect x="54" y="84" width="22" height="20" rx="3" fill="#7eb8f7"/>
+      <rect x="78" y="84" width="22" height="20" rx="3" fill="#7eb8f7"/>
+      <rect x="38" y="114" width="24" height="36" rx="3" fill="#a0724a"/>
+      <!-- right building: gemeentehuis -->
+      <rect x="170" y="42" width="100" height="110" rx="4" fill="#c8b890"/>
+      <rect x="170" y="42" width="100" height="18" rx="4" fill="#b8a070"/>
+      <text x="220" y="56" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" font-weight="800" fill="#1B3A6B">GEMEENTEHUIS</text>
+      <!-- pillars -->
+      <rect x="183" y="60" width="8" height="90" rx="3" fill="#d4c890"/>
+      <rect x="200" y="60" width="8" height="90" rx="3" fill="#d4c890"/>
+      <rect x="252" y="60" width="8" height="90" rx="3" fill="#d4c890"/>
+      <!-- door gemeentehuis -->
+      <rect x="211" y="112" width="18" height="40" rx="3" fill="#7a5230"/>
+      <!-- arrow between buildings -->
+      <line x1="112" y1="110" x2="168" y2="110" stroke="#e53e3e" stroke-width="2.5" stroke-dasharray="5,3"/>
+      <polygon points="168,106 176,110 168,114" fill="#e53e3e"/>
+      <polygon points="112,106 104,110 112,114" fill="#e53e3e"/>
+    </svg>`
+  },
+  {
+    answer: "gedurende",
+    options: ["gedurende","tijdens","tot","vanaf"],
+    question: "___ <span>de zomervakantie</span> heeft hij een bijbaan gehad.",
+    hint: "Gedurende = voor de gehele duur van een periode (formeler dan 'tijdens').",
+    svg: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg" class="game-scene">
+      <rect width="280" height="180" fill="#fff8e8"/>
+      <!-- sun -->
+      <circle cx="220" cy="42" r="28" fill="#f5c542"/>
+      <line x1="220" y1="6" x2="220" y2="0" stroke="#f5c542" stroke-width="3" stroke-linecap="round"/>
+      <line x1="248" y1="14" x2="253" y2="9" stroke="#f5c542" stroke-width="3" stroke-linecap="round"/>
+      <line x1="256" y1="42" x2="262" y2="42" stroke="#f5c542" stroke-width="3" stroke-linecap="round"/>
+      <!-- calendar -->
+      <rect x="44" y="28" width="144" height="132" rx="10" fill="white" stroke="#c0cfe8" stroke-width="2"/>
+      <rect x="44" y="28" width="144" height="32" rx="10" fill="#3B5EC6"/>
+      <rect x="44" y="48" width="144" height="12" fill="#3B5EC6"/>
+      <text x="116" y="50" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" font-weight="800" fill="white">JULI / AUGUSTUS</text>
+      <!-- calendar grid -->
+      <text x="60" y="78" font-family="Nunito,sans-serif" font-size="9" fill="#6b7280">M</text>
+      <text x="80" y="78" font-family="Nunito,sans-serif" font-size="9" fill="#6b7280">D</text>
+      <text x="100" y="78" font-family="Nunito,sans-serif" font-size="9" fill="#6b7280">W</text>
+      <text x="120" y="78" font-family="Nunito,sans-serif" font-size="9" fill="#6b7280">D</text>
+      <text x="140" y="78" font-family="Nunito,sans-serif" font-size="9" fill="#6b7280">V</text>
+      <!-- highlighted weeks -->
+      <rect x="54" y="84" width="120" height="14" rx="3" fill="#f5c542" opacity=".4"/>
+      <rect x="54" y="102" width="120" height="14" rx="3" fill="#f5c542" opacity=".4"/>
+      <rect x="54" y="120" width="120" height="14" rx="3" fill="#f5c542" opacity=".4"/>
+      <rect x="54" y="138" width="120" height="14" rx="3" fill="#f5c542" opacity=".4"/>
+    </svg>`
+  },
+  {
+    answer: "via",
+    options: ["via","langs","door","over"],
+    question: "De informatie werd ___ <span>het schoolportaal</span> verspreid.",
+    hint: "Via = door middel van / langs de weg van. Niet te verwarren met 'door' (door een ruimte heen) of 'langs' (erlangs gaan).",
+    svg: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg" class="game-scene">
+      <rect width="280" height="180" fill="#E8F0FA"/>
+      <!-- laptop -->
+      <rect x="78" y="88" width="124" height="20" rx="6" fill="#374151"/>
+      <path d="M86,88 L86,44 Q86,38 92,38 L188,38 Q194,38 194,44 L194,88 Z" fill="#1B3A6B"/>
+      <rect x="90" y="42" width="100" height="42" rx="3" fill="#2d4a7a"/>
+      <!-- portal on screen -->
+      <rect x="94" y="46" width="92" height="34" rx="3" fill="#3B5EC6"/>
+      <text x="140" y="58" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" font-weight="800" fill="white">SCHOOLPORTAAL</text>
+      <rect x="100" y="62" width="32" height="6" rx="3" fill="rgba(255,255,255,.3)"/>
+      <rect x="136" y="62" width="44" height="6" rx="3" fill="rgba(255,255,255,.2)"/>
+      <rect x="100" y="70" width="60" height="6" rx="3" fill="rgba(255,255,255,.2)"/>
+      <!-- wifi / signal arrows indicating broadcast -->
+      <path d="M66,60 Q72,50 80,60" stroke="#3B5EC6" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M58,52 Q70,36 82,52" stroke="#3B5EC6" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M200,60 Q208,50 216,60" stroke="#3B5EC6" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M198,52 Q210,36 222,52" stroke="#3B5EC6" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <!-- hinge -->
+      <rect x="85" y="86" width="110" height="4" rx="2" fill="#555"/>
+    </svg>`
+  },
+  {
+    answer: "wegens",
+    options: ["wegens","dankzij","ondanks","vanwege"],
+    question: "De school was gesloten ___ <span>een technisch defect</span>.",
+    hint: "Wegens en vanwege zijn beide correct hier, maar 'wegens' is formeler. Dankzij impliceert een positief gevolg — dat klopt hier niet.",
+    svg: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg" class="game-scene">
+      <rect width="280" height="180" fill="#f0e8d8"/>
+      <!-- school building -->
+      <rect x="30" y="60" width="220" height="100" rx="6" fill="#d4bc80"/>
+      <!-- roof / triangle -->
+      <polygon points="20,62 140,18 260,62" fill="#c8a858"/>
+      <!-- windows closed/X -->
+      <rect x="52" y="80" width="40" height="32" rx="4" fill="#7eb8f7" opacity=".5"/>
+      <line x1="52" y1="80" x2="92" y2="112" stroke="#e53e3e" stroke-width="3"/>
+      <line x1="92" y1="80" x2="52" y2="112" stroke="#e53e3e" stroke-width="3"/>
+      <rect x="120" y="80" width="40" height="32" rx="4" fill="#7eb8f7" opacity=".5"/>
+      <line x1="120" y1="80" x2="160" y2="112" stroke="#e53e3e" stroke-width="3"/>
+      <line x1="160" y1="80" x2="120" y2="112" stroke="#e53e3e" stroke-width="3"/>
+      <rect x="188" y="80" width="40" height="32" rx="4" fill="#7eb8f7" opacity=".5"/>
+      <line x1="188" y1="80" x2="228" y2="112" stroke="#e53e3e" stroke-width="3"/>
+      <line x1="228" y1="80" x2="188" y2="112" stroke="#e53e3e" stroke-width="3"/>
+      <!-- door with lock -->
+      <rect x="116" y="122" width="48" height="38" rx="4" fill="#a0724a"/>
+      <!-- padlock -->
+      <rect x="130" y="132" width="20" height="16" rx="4" fill="#888"/>
+      <path d="M134,132 Q134,122 140,122 Q146,122 146,132" stroke="#888" stroke-width="4" fill="none"/>
+      <circle cx="140" cy="140" r="3" fill="#555"/>
+      <!-- floor -->
+      <rect x="0" y="155" width="280" height="25" fill="#c8b89a"/>
+    </svg>`
+  }
+];
+
+let gameScore = 0;
+
+function buildGame() {
+  const grid = document.getElementById('gameGrid');
+  grid.innerHTML = '';
+  gameScore = 0;
+  document.getElementById('gscore').textContent = 0;
+  document.getElementById('gtotal').textContent = scenes.length;
+
+  scenes.forEach((sc, i) => {
+    const opts = [...sc.options].sort(() => Math.random() - .5);
+    const card = document.createElement('div');
+    card.className = 'game-card';
+    card.id = `gc-${i}`;
+    card.innerHTML = `
+      ${sc.svg}
+      <div class="game-body">
+        <div class="game-question">${sc.question}</div>
+        <div class="game-options">
+          ${opts.map(o => `<button class="game-btn" onclick="gameCheck(${i},'${o}','${sc.answer}',this)">${o}</button>`).join('')}
+        </div>
+        <div class="game-feedback" id="gfb-${i}"></div>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+function gameCheck(idx, chosen, correct, btn) {
+  const card = document.getElementById(`gc-${idx}`);
+  if (card.classList.contains('gc-correct') || card.classList.contains('gc-wrong')) return;
+  card.querySelectorAll('.game-btn').forEach(b => b.disabled = true);
+  const fb = document.getElementById(`gfb-${idx}`);
+  if (chosen === correct) {
+    card.classList.add('gc-correct');
+    btn.classList.add('gb-ok');
+    fb.textContent = '✓ Correct!';
+    fb.className = 'game-feedback show ok';
+    gameScore++;
+    document.getElementById('gscore').textContent = gameScore;
+  } else {
+    card.classList.add('gc-wrong');
+    btn.classList.add('gb-err');
+    card.querySelectorAll('.game-btn').forEach(b => { if (b.textContent === correct) b.classList.add('gb-rev'); });
+    fb.innerHTML = `✗ Fout — het is: <strong>${correct}</strong>. ${scenes[idx].hint.replace('___', `<strong>${correct}</strong>`)}`;
+    fb.className = 'game-feedback show err';
+  }
+}
+
+buildGame();
 
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
