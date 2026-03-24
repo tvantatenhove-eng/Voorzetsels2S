@@ -7,159 +7,153 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
-  --navy:      #1B3A6B;
-  --navyd:     #122852;
-  --navyc:     #1E4080;
-  --blue:      #3B5EC6;
-  --bg:        #D0DDEF;
-  --bgl:       #E8F0FA;
-  --white:     #ffffff;
-  --text:      #1a2840;
-  --muted:     #5b6f8a;
-  --ok:        #16a34a;
-  --okl:       #dcfce7;
-  --err:       #dc2626;
-  --errl:      #fee2e2;
-  --gold:      #d97706;
-  --goldl:     #fef3c7;
-  --border:    #bfdbfe;
+  --navy:   #1B3A6B;
+  --navyd:  #122852;
+  --blue:   #3B5EC6;
+  --bg:     #D0DDEF;
+  --bgl:    #E8F0FA;
+  --white:  #ffffff;
+  --text:   #1a2840;
+  --muted:  #5b6f8a;
+  --ok:     #16a34a;
+  --okl:    #dcfce7;
+  --err:    #dc2626;
+  --errl:   #fee2e2;
+  --border: #bfdbfe;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 
-/* ── NAV ── */
-nav{background:var(--white);height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;box-shadow:0 2px 10px rgba(27,58,107,.12);position:sticky;top:0;z-index:50}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.nav-logo svg{width:36px;height:36px}
-.nav-brand{font-size:15px;font-weight:800;color:var(--navy);line-height:1.2}
+/* NAV */
+nav{background:var(--white);height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;box-shadow:0 2px 10px rgba(27,58,107,.12);position:sticky;top:0;z-index:50}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
+.nav-logo svg{width:34px;height:34px;flex-shrink:0}
+.nav-brand{font-size:14px;font-weight:800;color:var(--navy);line-height:1.2;min-width:0}
 .nav-brand small{display:block;font-size:10px;font-weight:600;color:var(--muted)}
-.nav-tabs{display:flex;gap:6px}
-.nav-tab{background:none;border:2px solid var(--border);color:var(--navy);font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;padding:7px 18px;border-radius:100px;cursor:pointer;transition:all .2s}
+.nav-tabs{display:flex;gap:6px;flex-shrink:0}
+.nav-tab{background:none;border:2px solid var(--border);color:var(--navy);font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;padding:7px 16px;border-radius:100px;cursor:pointer;transition:all .2s;white-space:nowrap}
 .nav-tab:hover{background:var(--navy);color:white;border-color:var(--navy)}
 .nav-tab.active{background:var(--navy);color:white;border-color:var(--navy)}
 
-/* ── HERO ── */
+/* HERO */
 .hero{background:linear-gradient(135deg,var(--navyd) 0%,var(--navy) 60%,#2a5298 100%);padding:48px 32px 56px;text-align:center;position:relative;overflow:hidden}
 .hero-ast{position:absolute;opacity:.06;pointer-events:none}
 .hero-ast.r{right:-60px;top:-60px;width:320px;height:320px}
 .hero-ast.l{left:-40px;bottom:-40px;width:200px;height:200px}
 .hero-badge{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.9);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:5px 16px;border-radius:100px;margin-bottom:18px}
-.hero h1{font-size:clamp(36px,7vw,64px);font-weight:900;color:white;line-height:1.05;margin-bottom:12px}
+.hero h1{font-size:clamp(32px,7vw,64px);font-weight:900;color:white;line-height:1.05;margin-bottom:12px}
 .hero h1 em{color:#7eb8f7;font-style:normal}
-.hero-sub{color:rgba(255,255,255,.7);font-size:15px;font-weight:600;max-width:480px;margin:0 auto 28px}
-.hero-stats{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
-.stat-pill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:100px;padding:8px 20px;font-size:13px;font-weight:800;color:white;display:flex;align-items:center;gap:8px}
+.hero-sub{color:rgba(255,255,255,.7);font-size:15px;font-weight:600;max-width:480px;margin:0 auto 24px}
+.hero-stats{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.stat-pill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:100px;padding:7px 14px;font-size:12px;font-weight:800;color:white;display:flex;align-items:center;gap:6px}
 .stat-pill strong{color:#7eb8f7}
 .wave{display:block;width:100%;height:48px;margin-bottom:-2px}
 
-/* ── MAIN ── */
-main{max-width:960px;margin:0 auto;padding:32px 20px 80px}
-
-/* ── SECTION HEADER ── */
+/* MAIN */
+main{max-width:960px;margin:0 auto;padding:28px 16px 80px}
 .sec-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px}
 .sec-title{display:flex;align-items:center;gap:12px}
 .sec-icon{width:44px;height:44px;border-radius:14px;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
-.sec-title h2{font-size:24px;font-weight:900;color:var(--navyd)}
+.sec-title h2{font-size:22px;font-weight:900;color:var(--navyd)}
 .sec-title p{font-size:13px;font-weight:600;color:var(--muted);margin-top:2px}
-.live-score{background:var(--navy);color:white;border-radius:100px;padding:8px 22px;font-size:14px;font-weight:800;white-space:nowrap}
+.live-score{background:var(--navy);color:white;border-radius:100px;padding:8px 20px;font-size:14px;font-weight:800;white-space:nowrap}
 .live-score em{color:#7eb8f7;font-style:normal}
 
-/* progress bar */
-.prog-wrap{background:var(--bgl);border-radius:100px;height:8px;margin-bottom:24px;overflow:hidden}
+.prog-wrap{background:var(--bgl);border-radius:100px;height:8px;margin-bottom:20px;overflow:hidden}
 .prog-bar{height:100%;border-radius:100px;background:linear-gradient(90deg,#22c55e,#16a34a);transition:width .4s ease}
 
-/* ── EXERCISE CARD ── */
-.ex-list{display:flex;flex-direction:column;gap:14px}
-.ex-card{background:var(--white);border-radius:18px;border:2px solid var(--border);box-shadow:0 2px 12px rgba(27,58,107,.06);overflow:hidden;transition:border-color .25s,box-shadow .25s}
-.ex-card.state-ok {border-color:var(--ok); box-shadow:0 2px 16px rgba(22,163,74,.12)}
+/* EXERCISE CARDS */
+.ex-list{display:flex;flex-direction:column;gap:12px}
+.ex-card{background:var(--white);border-radius:16px;border:2px solid var(--border);box-shadow:0 2px 12px rgba(27,58,107,.06);overflow:hidden;transition:border-color .25s,box-shadow .25s}
+.ex-card.state-ok{border-color:var(--ok);box-shadow:0 2px 16px rgba(22,163,74,.12)}
 .ex-card.state-err{border-color:var(--err);box-shadow:0 2px 16px rgba(220,38,38,.12)}
-.ex-top{padding:18px 22px 14px;display:flex;gap:14px;align-items:flex-start}
-.ex-num{min-width:32px;height:32px;border-radius:10px;background:var(--bgl);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:var(--navy);flex-shrink:0;margin-top:1px}
-.ex-card.state-ok  .ex-num{background:var(--okl); color:var(--ok)}
+.ex-top{padding:16px 16px 12px;display:flex;gap:12px;align-items:flex-start}
+.ex-num{min-width:30px;height:30px;border-radius:9px;background:var(--bgl);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:var(--navy);flex-shrink:0;margin-top:2px}
+.ex-card.state-ok .ex-num{background:var(--okl);color:var(--ok)}
 .ex-card.state-err .ex-num{background:var(--errl);color:var(--err)}
-.ex-zin{font-size:16px;font-weight:700;color:var(--text);line-height:1.5}
-.blank{display:inline-block;min-width:80px;border-bottom:3px solid var(--navy);text-align:center;color:var(--navy);font-weight:900;padding:0 6px;margin:0 2px}
-.ex-btns{padding:0 22px 18px 68px;display:flex;gap:8px;flex-wrap:wrap}
-.ex-btn{background:var(--bgl);border:2px solid var(--border);color:var(--navy);font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;padding:7px 20px;border-radius:100px;cursor:pointer;transition:all .15s}
+.ex-zin{font-size:15px;font-weight:700;color:var(--text);line-height:1.55}
+.blank{display:inline-block;min-width:64px;border-bottom:3px solid var(--navy);text-align:center;color:var(--navy);font-weight:900;padding:0 4px;margin:0 2px}
+.ex-btns{padding:0 14px 16px 14px;display:flex;gap:8px;flex-wrap:wrap}
+.ex-btn{background:var(--bgl);border:2px solid var(--border);color:var(--navy);font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;padding:9px 18px;border-radius:100px;cursor:pointer;transition:all .15s;min-height:44px;touch-action:manipulation}
 .ex-btn:hover:not(:disabled){background:var(--navy);border-color:var(--navy);color:white}
-.ex-btn.b-ok {background:var(--ok); border-color:var(--ok); color:white}
+.ex-btn.b-ok{background:var(--ok);border-color:var(--ok);color:white}
 .ex-btn.b-err{background:var(--err);border-color:var(--err);color:white}
 .ex-btn.b-rev{background:var(--okl);border-color:var(--ok);color:var(--ok)}
 .ex-btn:disabled{cursor:default;opacity:.85}
-.ex-fb{padding:10px 22px 16px 68px;font-size:13px;font-weight:700;display:none;line-height:1.55}
+.ex-fb{padding:8px 14px 14px 14px;font-size:13px;font-weight:700;display:none;line-height:1.55}
 .ex-fb.show{display:block}
-.ex-fb.ok {color:var(--ok)}
+.ex-fb.ok{color:var(--ok)}
 .ex-fb.err{color:var(--err)}
 
-/* ── RESET BTN ── */
-.reset-btn{display:flex;align-items:center;gap:8px;background:white;border:2.5px solid var(--navy);color:var(--navy);font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;padding:10px 26px;border-radius:100px;cursor:pointer;transition:all .2s;margin-top:24px}
+.reset-btn{display:flex;align-items:center;gap:8px;background:white;border:2.5px solid var(--navy);color:var(--navy);font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;padding:11px 26px;border-radius:100px;cursor:pointer;transition:all .2s;margin-top:24px;min-height:48px;touch-action:manipulation}
 .reset-btn:hover{background:var(--navy);color:white}
 
-/* ── DIVIDER ── */
-.divider{height:2px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:48px 0}
-
-/* ════════════════════════════════
-   RAADSPEL
-════════════════════════════════ */
-.game-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px}
-
-.game-card{background:var(--white);border-radius:20px;border:2px solid var(--border);box-shadow:0 4px 16px rgba(27,58,107,.08);overflow:hidden;transition:all .25s}
+/* GAME */
+.game-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.game-card{background:var(--white);border-radius:20px;border:2px solid var(--border);box-shadow:0 4px 16px rgba(27,58,107,.08);overflow:hidden;transition:all .25s;position:relative}
 .game-card:hover:not(.gc-ok):not(.gc-err){transform:translateY(-3px);box-shadow:0 8px 28px rgba(27,58,107,.14)}
-.game-card.gc-ok {border-color:var(--ok); box-shadow:0 4px 20px rgba(22,163,74,.15)}
+.game-card.gc-ok{border-color:var(--ok);box-shadow:0 4px 20px rgba(22,163,74,.15)}
 .game-card.gc-err{border-color:var(--err);box-shadow:0 4px 20px rgba(220,38,38,.15)}
-
+.game-card.gc-ok .game-body::before{content:'✓';position:absolute;right:16px;top:12px;font-size:20px;color:var(--ok);font-weight:900}
 .game-img{width:100%;display:block;border-bottom:2px solid var(--border)}
-.game-body{padding:16px 18px}
-
+.game-body{padding:14px 16px}
 .game-tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:100px;margin-bottom:10px}
 .game-tag.pl{background:#dbeafe;color:#1d4ed8}
 .game-tag.ri{background:#e0e7ff;color:#4338ca}
 .game-tag.ti{background:#d1fae5;color:#065f46}
 .game-tag.or{background:#fce7f3;color:#9d174d}
 .game-tag.wi{background:#fef3c7;color:#92400e}
-
-.game-q{font-size:15px;font-weight:800;color:var(--navyd);margin-bottom:14px;line-height:1.4}
+.game-q{font-size:14px;font-weight:800;color:var(--navyd);margin-bottom:12px;line-height:1.45}
 .game-q span{color:var(--blue)}
 .game-opts{display:flex;gap:8px;flex-wrap:wrap}
-.game-btn{background:var(--bgl);border:2px solid var(--border);color:var(--navy);font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;padding:6px 16px;border-radius:100px;cursor:pointer;transition:all .15s}
+.game-btn{background:var(--bgl);border:2px solid var(--border);color:var(--navy);font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;padding:8px 16px;border-radius:100px;cursor:pointer;transition:all .15s;min-height:44px;touch-action:manipulation}
 .game-btn:hover:not(:disabled){background:var(--navy);border-color:var(--navy);color:white}
-.game-btn.gb-ok {background:var(--ok); border-color:var(--ok); color:white}
+.game-btn.gb-ok{background:var(--ok);border-color:var(--ok);color:white}
 .game-btn.gb-err{background:var(--err);border-color:var(--err);color:white}
 .game-btn.gb-rev{background:var(--okl);border-color:var(--ok);color:var(--ok);font-weight:900}
 .game-btn:disabled{cursor:default}
-
-.game-fb{margin-top:12px;font-size:12px;font-weight:700;display:none;padding:8px 12px;border-radius:10px;line-height:1.5}
+.game-fb{margin-top:10px;font-size:12px;font-weight:700;display:none;padding:8px 12px;border-radius:10px;line-height:1.5}
 .game-fb.show{display:block}
-.game-fb.ok {background:var(--okl);color:var(--ok)}
+.game-fb.ok{background:var(--okl);color:var(--ok)}
 .game-fb.err{background:var(--errl);color:var(--err)}
 
-/* confetti badge on correct */
-.game-card.gc-ok .game-body::before{content:'✓';position:absolute;right:18px;top:12px;font-size:22px;color:var(--ok);font-weight:900}
-.game-card{position:relative}
-
-/* ── FINAL SCORE BANNER ── */
-.score-banner{display:none;background:var(--navy);border-radius:20px;padding:30px 36px;text-align:center;margin-top:28px;color:white}
+.score-banner{display:none;background:var(--navy);border-radius:20px;padding:28px 24px;text-align:center;margin-top:24px;color:white}
 .score-banner.show{display:block}
-.score-banner .big-score{font-size:64px;font-weight:900;line-height:1;color:#7eb8f7}
-.score-banner p{font-size:15px;font-weight:600;color:rgba(255,255,255,.7);margin-top:8px}
+.score-banner .big-score{font-size:56px;font-weight:900;line-height:1;color:#7eb8f7}
+.score-banner p{font-size:14px;font-weight:600;color:rgba(255,255,255,.7);margin-top:8px}
 
-/* ── RESPONSIVE ── */
-@media(max-width:640px){
-  nav{padding:0 16px}
-  .nav-tabs{gap:4px}
-  .nav-tab{font-size:11px;padding:6px 12px}
-  .hero{padding:36px 20px 44px}
-  main{padding:24px 14px 60px}
-  .ex-top{gap:10px;padding:16px 16px 12px}
-  .ex-btns{padding:0 16px 16px 58px}
-  .ex-fb{padding:8px 16px 14px 58px}
+/* MOBILE */
+@media(max-width:480px){
+  nav{padding:0 14px;height:56px}
+  .nav-brand{font-size:13px}
+  .nav-logo svg{width:30px;height:30px}
+  .nav-tab{font-size:12px;padding:7px 12px}
+  .hero{padding:32px 16px 44px}
+  .hero h1{font-size:clamp(28px,9vw,48px)}
+  .hero-sub{font-size:14px}
+  .stat-pill{font-size:11px;padding:6px 12px}
+  .wave{height:32px}
+  main{padding:20px 12px 60px}
+  .sec-head{flex-direction:column;align-items:flex-start}
+  .live-score{align-self:flex-end}
+  .ex-top{padding:14px 14px 10px;gap:10px}
+  .ex-num{min-width:28px;height:28px;font-size:11px}
+  .ex-zin{font-size:14px}
+  .blank{min-width:54px;font-size:14px}
+  .ex-btns{padding:0 12px 14px 12px;gap:7px}
+  .ex-btn{font-size:13px;padding:9px 14px}
+  .ex-fb{padding:6px 12px 12px 12px;font-size:12px}
   .game-grid{grid-template-columns:1fr}
+  .game-q{font-size:14px}
+  .game-btn{font-size:13px;padding:9px 14px}
+  .sec-icon{width:38px;height:38px;font-size:19px}
+  .sec-title h2{font-size:19px}
+  .reset-btn{font-size:13px;padding:10px 20px}
 }
 </style>
 </head>
 <body>
 
-<!-- ── NAV ── -->
 <nav>
   <a class="nav-logo" href="#">
     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -182,7 +176,6 @@ main{max-width:960px;margin:0 auto;padding:32px 20px 80px}
   </div>
 </nav>
 
-<!-- ── HERO ── -->
 <div class="hero">
   <svg class="hero-ast r" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
     <g transform="translate(50,50)">
@@ -212,14 +205,13 @@ main{max-width:960px;margin:0 auto;padding:32px 20px 80px}
       <rect x="-7" y="-47" width="14" height="47" rx="3" fill="white" transform="rotate(315)"/>
     </g>
   </svg>
-
   <div class="hero-badge">Doe-opdracht · 2 VWO</div>
   <h1>Oefen je<br><em>Voorzetsels</em></h1>
-  <p class="hero-sub">Vul het juiste voorzetsel in of raad het aan de hand van een tekening. Na elk antwoord zie je uitleg.</p>
+  <p class="hero-sub">Vul het juiste voorzetsel in of raad het aan de hand van een tekening.</p>
   <div class="hero-stats">
-    <div class="stat-pill">🎯 <strong>20</strong> oefenzinnen</div>
+    <div class="stat-pill">🎯 <strong>15</strong> oefenzinnen</div>
     <div class="stat-pill">🎨 <strong>12</strong> raadspel-plaatjes</div>
-    <div class="stat-pill">⚡ Met uitleg bij elk antwoord</div>
+    <div class="stat-pill">⚡ Uitleg bij elk antwoord</div>
   </div>
 </div>
 <svg class="wave" viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -228,45 +220,33 @@ main{max-width:960px;margin:0 auto;padding:32px 20px 80px}
 
 <main>
 
-<!-- ════════════════ OEFENZINNEN ════════════════ -->
 <div id="tab-oefenen">
   <div class="sec-head">
     <div class="sec-title">
       <div class="sec-icon">🎯</div>
-      <div>
-        <h2>Oefenzinnen</h2>
-        <p>Kies het juiste voorzetsel — elke vraag geeft daarna uitleg</p>
-      </div>
+      <div><h2>Oefenzinnen</h2><p>Kies het juiste voorzetsel — elke vraag geeft daarna uitleg</p></div>
     </div>
     <div class="live-score">Score: <em id="exS">0</em> / <em id="exT">15</em></div>
   </div>
-
   <div class="prog-wrap"><div class="prog-bar" id="exBar" style="width:0%"></div></div>
   <div class="ex-list" id="exList"></div>
-
   <div class="score-banner" id="exBanner">
-    <div class="big-score" id="exFinal">0/20</div>
+    <div class="big-score" id="exFinal">0/15</div>
     <p id="exMsg">Probeer het nog een keer!</p>
   </div>
   <button class="reset-btn" onclick="initEx()">↺ Opnieuw beginnen</button>
 </div>
 
-<!-- ════════════════ RAADSPEL ════════════════ -->
 <div id="tab-raadspel" style="display:none">
   <div class="sec-head">
     <div class="sec-title">
       <div class="sec-icon">🎨</div>
-      <div>
-        <h2>Raad het voorzetsel!</h2>
-        <p>Kijk naar de tekening en kies het juiste voorzetsel</p>
-      </div>
+      <div><h2>Raad het voorzetsel!</h2><p>Kijk naar de tekening en kies het juiste voorzetsel</p></div>
     </div>
     <div class="live-score">Score: <em id="gsS">0</em> / <em id="gsT">12</em></div>
   </div>
-
   <div class="prog-wrap"><div class="prog-bar" id="gsBar" style="width:0%"></div></div>
   <div class="game-grid" id="gameGrid"></div>
-
   <div class="score-banner" id="gsBanner">
     <div class="big-score" id="gsFinal">0/12</div>
     <p id="gsMsg">Probeer het nog een keer!</p>
@@ -277,52 +257,46 @@ main{max-width:960px;margin:0 auto;padding:32px 20px 80px}
 </main>
 
 <script>
-// ── TAB SWITCH ──
 function showTab(name) {
   document.getElementById('tab-oefenen').style.display  = name === 'oefenen'  ? '' : 'none';
   document.getElementById('tab-raadspel').style.display = name === 'raadspel' ? '' : 'none';
   document.querySelectorAll('.nav-tab').forEach(function(t, i) {
-    t.classList.toggle('active', (i === 0 && name === 'oefenen') || (i === 1 && name === 'raadspel'));
+    t.classList.toggle('active', (i===0 && name==='oefenen') || (i===1 && name==='raadspel'));
   });
 }
-
 function shuffle(a) {
   var b = a.slice();
-  for (var i = b.length - 1; i > 0; i--) {
-    var j = Math.floor(Math.random() * (i + 1));
+  for (var i = b.length-1; i > 0; i--) {
+    var j = Math.floor(Math.random()*(i+1));
     var t = b[i]; b[i] = b[j]; b[j] = t;
   }
   return b;
 }
-
 function msg(score, total) {
-  var pct = score / total;
-  if (pct === 1)   return '🏆 Perfect! Alle antwoorden goed!';
-  if (pct >= 0.85) return '🎉 Uitstekend! Bijna perfect!';
-  if (pct >= 0.70) return '👍 Goed gedaan! Een paar foutjes.';
-  if (pct >= 0.50) return '📚 Halverwege! Oefen de uitleg nog eens.';
-  return '💪 Probeer het nog een keer — lees de uitleg goed!';
+  var p = score/total;
+  if (p===1)   return '🏆 Perfect! Alle antwoorden goed!';
+  if (p>=0.85) return '🎉 Uitstekend! Bijna perfect!';
+  if (p>=0.70) return '👍 Goed gedaan! Een paar foutjes.';
+  if (p>=0.50) return '📚 Halverwege! Oefen de uitleg nog eens.';
+  return '💪 Probeer het nog een keer!';
 }
 
-// ══════════════════════════════════════
-// OEFENZINNEN
-// ══════════════════════════════════════
 var exercises = [
-  {zin:"De minister sprak ___ grote overtuiging over de nieuwe wet.",      antw:"met",       keuzes:["met","in","van","door"],              uitleg:"✏️ met grote overtuiging = bepaling van gesteldheid (Hoe?)"},
-  {zin:"___ het slechte weer werd de wedstrijd afgelast.",                  antw:"Vanwege",   keuzes:["Vanwege","Ondanks","Tijdens","Dankzij"],uitleg:"✏️ vanwege = neutraal/negatief gevolg. Dankzij = positief. Ondanks = tegenstelling."},
-  {zin:"De directeur reageerde ___ grote zorg op de uitkomsten.",           antw:"met",       keuzes:["met","op","in","over"],                 uitleg:"✏️ met grote zorg = bepaling van gesteldheid (Hoe?)"},
-  {zin:"De stad heeft veel te bieden ___ het gebied van kunst en cultuur.", antw:"op",        keuzes:["op","in","aan","over"],                 uitleg:"📍 op het gebied van = vaste uitdrukking"},
-  {zin:"Ze klommen ___ de heuvel om het uitzicht te bewonderen.",           antw:"via",       keuzes:["via","langs","door","over"],             uitleg:"🧭 via de heuvel = richtingsbepaling (langs welke weg?)"},
-  {zin:"Hij wacht al maanden ___ een reactie van de universiteit.",         antw:"op",        keuzes:["op","naar","voor","aan"],               uitleg:"🔑 wachten op = vaste combinatie!"},
-  {zin:"___ haar doorzettingsvermogen behaalde ze een uitstekend resultaat.",antw:"Dankzij",  keuzes:["Dankzij","Wegens","Ondanks","Vanwege"], uitleg:"✅ dankzij = positief gevolg"},
-  {zin:"De vergadering duurt ___ negen uur tot laat in de middag.",         antw:"van",       keuzes:["van","vanaf","tussen","tijdens"],        uitleg:"🕐 van … tot = tijdsduur (begin- en eindpunt)"},
-  {zin:"Hij is verantwoordelijk ___ de organisatie van het schoolfeest.",   antw:"voor",      keuzes:["voor","over","aan","bij"],              uitleg:"🔑 verantwoordelijk voor = vaste combinatie!"},
-  {zin:"De trein reed ___ Utrecht richting Amsterdam.",                      antw:"via",       keuzes:["via","door","langs","naar"],             uitleg:"🧭 via Utrecht = richtingsbepaling (tussenstop op de route)"},
-  {zin:"___ de verwachtingen scoorde de nieuwe film slecht bij critici.",   antw:"Ondanks",   keuzes:["Ondanks","Dankzij","Vanwege","Wegens"],  uitleg:"↔️ ondanks = tegenstelling: men verwachtte iets anders"},
-  {zin:"Ze heeft ___ de zomervakantie hard gewerkt om haar schulden af te lossen.",antw:"gedurende",keuzes:["gedurende","tijdens","voor","in"], uitleg:"🕐 gedurende = voor de gehele duur van een periode (formeler dan 'tijdens')"},
-  {zin:"De nieuwe maatregel werd ingevoerd ___ aanhoudende klachten.",      antw:"wegens",    keuzes:["wegens","dankzij","ondanks","door"],     uitleg:"⚠️ wegens = formele variant van vanwege (officiële teksten)"},
-  {zin:"Hij liep ___ het gemeentehuis en zag zijn naam op het prikbord.",   antw:"langs",     keuzes:["langs","voorbij","naast","tegenover"],   uitleg:"🧭 langs het gemeentehuis = richtingsbepaling (hij loopt erlangs)"},
-  {zin:"Ze klaagde ___ de slechte communicatie bij haar leidinggevende.",   antw:"over",      keuzes:["over","aan","bij","van"],               uitleg:"🔑 klagen over = vaste combinatie!"}
+  {zin:"De minister sprak ___ grote overtuiging over de nieuwe wet.",       antw:"met",       keuzes:["met","in","van","door"],               uitleg:"✏️ met grote overtuiging = bepaling van gesteldheid (Hoe?)"},
+  {zin:"___ het slechte weer werd de wedstrijd afgelast.",                   antw:"Vanwege",   keuzes:["Vanwege","Ondanks","Tijdens","Dankzij"], uitleg:"✏️ vanwege = neutraal/negatief gevolg. Dankzij = positief. Ondanks = tegenstelling."},
+  {zin:"De directeur reageerde ___ grote zorg op de uitkomsten.",            antw:"met",       keuzes:["met","op","in","over"],                  uitleg:"✏️ met grote zorg = bepaling van gesteldheid (Hoe?)"},
+  {zin:"De stad heeft veel te bieden ___ het gebied van kunst en cultuur.",  antw:"op",        keuzes:["op","in","aan","over"],                  uitleg:"📍 op het gebied van = vaste uitdrukking"},
+  {zin:"Ze klommen ___ de heuvel om het uitzicht te bewonderen.",            antw:"via",       keuzes:["via","langs","door","over"],              uitleg:"🧭 via de heuvel = richtingsbepaling (langs welke weg?)"},
+  {zin:"Hij wacht al maanden ___ een reactie van de universiteit.",          antw:"op",        keuzes:["op","naar","voor","aan"],                uitleg:"🔑 wachten op = vaste combinatie!"},
+  {zin:"___ haar doorzettingsvermogen behaalde ze een uitstekend resultaat.",antw:"Dankzij",   keuzes:["Dankzij","Wegens","Ondanks","Vanwege"],  uitleg:"✅ dankzij = positief gevolg"},
+  {zin:"De vergadering duurt ___ negen uur tot laat in de middag.",          antw:"van",       keuzes:["van","vanaf","tussen","tijdens"],         uitleg:"🕐 van … tot = tijdsduur (begin- en eindpunt)"},
+  {zin:"Hij is verantwoordelijk ___ de organisatie van het schoolfeest.",    antw:"voor",      keuzes:["voor","over","aan","bij"],               uitleg:"🔑 verantwoordelijk voor = vaste combinatie!"},
+  {zin:"De trein reed ___ Utrecht richting Amsterdam.",                       antw:"via",       keuzes:["via","door","langs","naar"],              uitleg:"🧭 via Utrecht = richtingsbepaling (tussenstop op de route)"},
+  {zin:"___ de verwachtingen scoorde de nieuwe film slecht bij critici.",    antw:"Ondanks",   keuzes:["Ondanks","Dankzij","Vanwege","Wegens"],   uitleg:"↔️ ondanks = tegenstelling: men verwachtte iets anders"},
+  {zin:"Ze heeft ___ de zomervakantie hard gewerkt om haar schulden af te lossen.", antw:"gedurende", keuzes:["gedurende","tijdens","voor","in"], uitleg:"🕐 gedurende = voor de gehele duur van een periode (formeler dan 'tijdens')"},
+  {zin:"De nieuwe maatregel werd ingevoerd ___ aanhoudende klachten.",       antw:"wegens",    keuzes:["wegens","dankzij","ondanks","door"],      uitleg:"⚠️ wegens = formele variant van vanwege (officiële teksten)"},
+  {zin:"Hij liep ___ het gemeentehuis en zag zijn naam op het prikbord.",    antw:"langs",     keuzes:["langs","voorbij","naast","tegenover"],    uitleg:"🧭 langs het gemeentehuis = richtingsbepaling (hij loopt erlangs)"},
+  {zin:"Ze klaagde ___ de slechte communicatie bij haar leidinggevende.",    antw:"over",      keuzes:["over","aan","bij","van"],                uitleg:"🔑 klagen over = vaste combinatie!"}
 ];
 
 var exScore = 0, exDone = 0;
@@ -336,127 +310,111 @@ function initEx() {
   list.innerHTML = '';
   exercises.forEach(function(ex, i) {
     var opts = shuffle(ex.keuzes);
-    var disp = ex.zin.replace('___', '<span class="blank" id="bl' + i + '">___</span>');
+    var disp = ex.zin.replace('___', '<span class="blank" id="bl'+i+'">___</span>');
     var card = document.createElement('div');
-    card.className = 'ex-card'; card.id = 'ec' + i;
+    card.className = 'ex-card'; card.id = 'ec'+i;
     var btns = opts.map(function(o) {
-      return '<button class="ex-btn" onclick="checkEx(' + i + ',\'' + o + '\',\'' + ex.antw + '\',this)">' + o + '</button>';
+      return '<button class="ex-btn" onclick="checkEx('+i+',\''+o+'\',\''+ex.antw+'\',this)">'+o+'</button>';
     }).join('');
     card.innerHTML =
-      '<div class="ex-top"><div class="ex-num">' + (i+1) + '</div><div class="ex-zin">' + disp + '</div></div>' +
-      '<div class="ex-btns">' + btns + '</div>' +
-      '<div class="ex-fb" id="efb' + i + '"></div>';
+      '<div class="ex-top"><div class="ex-num">'+(i+1)+'</div><div class="ex-zin">'+disp+'</div></div>'+
+      '<div class="ex-btns">'+btns+'</div>'+
+      '<div class="ex-fb" id="efb'+i+'"></div>';
     list.appendChild(card);
   });
 }
 
 function checkEx(idx, chosen, correct, btn) {
-  var card = document.getElementById('ec' + idx);
+  var card = document.getElementById('ec'+idx);
   if (card.classList.contains('state-ok') || card.classList.contains('state-err')) return;
-  card.querySelectorAll('.ex-btn').forEach(function(b) { b.disabled = true; });
-  document.getElementById('bl' + idx).textContent = chosen;
-  var fb = document.getElementById('efb' + idx);
+  card.querySelectorAll('.ex-btn').forEach(function(b){ b.disabled=true; });
+  document.getElementById('bl'+idx).textContent = chosen;
+  var fb = document.getElementById('efb'+idx);
   var uitleg = exercises[idx].uitleg;
   if (chosen.toLowerCase() === correct.toLowerCase()) {
     card.classList.add('state-ok'); btn.classList.add('b-ok');
-    fb.innerHTML = '✓ Correct! &nbsp;' + uitleg;
+    fb.innerHTML = '✓ Correct! &nbsp;'+uitleg;
     fb.className = 'ex-fb show ok';
-    exScore++;
-    document.getElementById('exS').textContent = exScore;
+    exScore++; document.getElementById('exS').textContent = exScore;
   } else {
     card.classList.add('state-err'); btn.classList.add('b-err');
-    card.querySelectorAll('.ex-btn').forEach(function(b) {
-      if (b.textContent.toLowerCase() === correct.toLowerCase()) b.classList.add('b-rev');
+    card.querySelectorAll('.ex-btn').forEach(function(b){
+      if (b.textContent.toLowerCase()===correct.toLowerCase()) b.classList.add('b-rev');
     });
-    fb.innerHTML = '✗ Fout — antwoord: <strong>' + correct + '</strong> &nbsp;' + uitleg;
+    fb.innerHTML = '✗ Fout — antwoord: <strong>'+correct+'</strong> &nbsp;'+uitleg;
     fb.className = 'ex-fb show err';
   }
   exDone++;
-  document.getElementById('exBar').style.width = (exDone / exercises.length * 100) + '%';
+  document.getElementById('exBar').style.width = (exDone/exercises.length*100)+'%';
   if (exDone === exercises.length) {
-    var banner = document.getElementById('exBanner');
-    document.getElementById('exFinal').textContent = exScore + '/' + exercises.length;
+    document.getElementById('exFinal').textContent = exScore+'/'+exercises.length;
     document.getElementById('exMsg').textContent = msg(exScore, exercises.length);
-    banner.classList.add('show');
+    document.getElementById('exBanner').classList.add('show');
   }
 }
 
 initEx();
 
-// ══════════════════════════════════════
-// RAADSPEL
-// ══════════════════════════════════════
 var scenes = [
-  {antw:"op",        tag:"pl", tagLabel:"Plaatsbepaling",
+  {antw:"op", tag:"pl", tagLabel:"Plaatsbepaling",
    keuzes:["op","in","onder","boven"],
    vraag:"De laptop ligt ___ <span>het bureau</span>.",
-   uitleg:"✅ op het bureau = plaatsbepaling (Waar?). 'Op' = op het oppervlak van iets.",
+   uitleg:"✅ op het bureau = plaatsbepaling (Waar?). Op = op het oppervlak van iets.",
    svg:'<svg viewBox="0 0 280 175" xmlns="http://www.w3.org/2000/svg" class="game-img"><rect width="280" height="175" fill="#E8F0FA"/><rect x="0" y="155" width="280" height="20" fill="#c8b89a"/><rect x="40" y="100" width="200" height="13" rx="5" fill="#a0724a"/><rect x="55" y="113" width="12" height="42" rx="4" fill="#7a5230"/><rect x="213" y="113" width="12" height="42" rx="4" fill="#7a5230"/><rect x="88" y="78" width="104" height="26" rx="6" fill="#374151"/><path d="M96,78 L96,42 Q96,36 102,36 L178,36 Q184,36 184,42 L184,78 Z" fill="#1B3A6B"/><rect x="100" y="40" width="80" height="34" rx="3" fill="#7eb8f7" opacity=".6"/><rect x="104" y="45" width="40" height="3" rx="1.5" fill="white" opacity=".7"/><rect x="104" y="52" width="55" height="3" rx="1.5" fill="white" opacity=".4"/><rect x="104" y="59" width="30" height="3" rx="1.5" fill="white" opacity=".5"/><rect x="95" y="76" width="90" height="4" rx="2" fill="#555"/></svg>'},
-
-  {antw:"vanwege",   tag:"or", tagLabel:"Oorzaakbepaling",
+  {antw:"vanwege", tag:"or", tagLabel:"Oorzaakbepaling",
    keuzes:["vanwege","ondanks","dankzij","tijdens"],
    vraag:"___ <span>de storm</span> werd de les afgelast.",
    uitleg:"⚠️ vanwege = neutraal/negatief gevolg. Dankzij = positief. Ondanks = tegenstelling.",
    svg:'<svg viewBox="0 0 280 175" xmlns="http://www.w3.org/2000/svg" class="game-img"><rect width="280" height="175" fill="#b0c8e0"/><ellipse cx="80" cy="55" rx="65" ry="38" fill="#7a8fa8"/><ellipse cx="165" cy="42" rx="78" ry="42" fill="#8899b0"/><ellipse cx="235" cy="58" rx="52" ry="32" fill="#6a7f98"/><polyline points="148,55 138,85 150,85 132,118" stroke="#f5c542" stroke-width="4" fill="none" stroke-linejoin="round"/><line x1="48" y1="108" x2="42" y2="125" stroke="#7eb8f7" stroke-width="2.5" stroke-linecap="round"/><line x1="78" y1="115" x2="72" y2="132" stroke="#7eb8f7" stroke-width="2.5" stroke-linecap="round"/><line x1="108" y1="103" x2="102" y2="120" stroke="#7eb8f7" stroke-width="2.5" stroke-linecap="round"/><line x1="180" y1="110" x2="174" y2="127" stroke="#7eb8f7" stroke-width="2.5" stroke-linecap="round"/><line x1="215" y1="103" x2="209" y2="120" stroke="#7eb8f7" stroke-width="2.5" stroke-linecap="round"/><line x1="245" y1="115" x2="239" y2="132" stroke="#7eb8f7" stroke-width="2.5" stroke-linecap="round"/><rect x="0" y="148" width="280" height="27" fill="#5aaa5a"/><rect x="108" y="124" width="64" height="28" rx="5" fill="white"/><line x1="112" y1="128" x2="168" y2="148" stroke="#e53e3e" stroke-width="3"/><line x1="168" y1="128" x2="112" y2="148" stroke="#e53e3e" stroke-width="3"/></svg>'},
-
-  {antw:"dankzij",   tag:"or", tagLabel:"Oorzaakbepaling",
+  {antw:"dankzij", tag:"or", tagLabel:"Oorzaakbepaling",
    keuzes:["dankzij","vanwege","ondanks","door"],
    vraag:"___ <span>haar inzet</span> behaalde ze een 9.",
    uitleg:"✅ dankzij = positief gevolg. De inzet is de reden voor het goede resultaat.",
-   svg:'<svg viewBox="0 0 280 175" xmlns="http://www.w3.org/2000/svg" class="game-img"><rect width="280" height="175" fill="#E8F0FA"/><rect x="72" y="22" width="136" height="135" rx="10" fill="white" stroke="#c0cfe8" stroke-width="2"/><rect x="72" y="22" width="136" height="28" rx="10" fill="#1B3A6B"/><rect x="72" y="38" width="136" height="12" fill="#1B3A6B"/><text x="140" y="42" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="800" fill="white">RAPPORT</text><rect x="88" y="62" width="60" height="8" rx="3" fill="#e8f0fa"/><rect x="88" y="76" width="60" height="8" rx="3" fill="#e8f0fa"/><rect x="88" y="90" width="60" height="8" rx="3" fill="#e8f0fa"/><text x="162" y="70" font-family="Nunito,sans-serif" font-size="11" font-weight="800" fill="#22a06b">8</text><text x="162" y="84" font-family="Nunito,sans-serif" font-size="11" font-weight="800" fill="#22a06b">7</text><text x="162" y="98" font-family="Nunito,sans-serif" font-size="11" font-weight="800" fill="#22a06b">8</text><text x="140" y="148" text-anchor="middle" font-family="Nunito,sans-serif" font-size="42" font-weight="900" fill="#22a06b">9</text><text x="178" y="148" font-family="Nunito,sans-serif" font-size="24" fill="#f5c542">★</text></svg>'},
-
-  {antw:"ondanks",   tag:"or", tagLabel:"Oorzaakbepaling",
+   svg:'<svg viewBox="0 0 280 175" xmlns="http://www.w3.org/2000/svg" class="game-img"><rect width="280" height="175" fill="#E8F0FA"/><rect x="72" y="22" width="136" height="135" rx="10" fill="white" stroke="#c0cfe8" stroke-width="2"/><rect x="72" y="22" width="136" height="28" rx="10" fill="#1B3A6B"/><rect x="72" y="38" width="136" height="12" fill="#1B3A6B"/><text x="140" y="42" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="800" fill="white">RAPPORT</text><rect x="88" y="62" width="60" height="8" rx="3" fill="#e8f0fa"/><rect x="88" y="76" width="60" height="8" rx="3" fill="#e8f0fa"/><rect x="88" y="90" width="60" height="8" rx="3" fill="#e8f0fa"/><text x="162" y="70" font-family="Nunito,sans-serif" font-size="11" font-weight="800" fill="#22a06b">8</text><text x="162" y="84" font-family="Nunito,sans-serif" font-size="11" font-weight="800" fill="#22a06b">7</text><text x="162" y="98" font-family="Nunito,sans-serif" font-size="11" font-weight="800" fill="#22a06b">8</text><text x="140" y="148" text-anchor="middle" font-family="Nunito,sans-serif" font-size="42" font-weight="900" fill="#22a06b">9</text><text x="178" y="148" font-family="Nunito,sans-serif" font-size="24" fill="#f5c542">&#9733;</text></svg>'},
+  {antw:"ondanks", tag:"or", tagLabel:"Oorzaakbepaling",
    keuzes:["ondanks","dankzij","vanwege","wegens"],
    vraag:"___ <span>zijn hoofdpijn</span> deed hij toch mee.",
-   uitleg:"↔️ ondanks = tegenstelling. Je verwacht dat hij NIET meedoet — maar hij doet het toch.",
-   svg:'<svg viewBox="0 0 280 175" xmlns="http://www.w3.org/2000/svg" class="game-img"><rect width="280" height="175" fill="#E8F0FA"/><rect x="44" y="108" width="192" height="12" rx="5" fill="#a0724a"/><rect x="58" y="120" width="11" height="40" rx="4" fill="#7a5230"/><rect x="211" y="120" width="11" height="40" rx="4" fill="#7a5230"/><rect x="120" y="72" width="40" height="40" rx="10" fill="#3B5EC6"/><circle cx="140" cy="57" r="20" fill="#f5c09a"/><ellipse cx="131" cy="54" rx="3" ry="3.5" fill="#1a2840"/><ellipse cx="149" cy="54" rx="3" ry="3.5" fill="#1a2840"/><path d="M132,66 Q140,62 148,66" stroke="#a06040" stroke-width="2" fill="none"/><path d="M122,37 Q128,31 134,37 Q140,43 146,37" stroke="#e53e3e" stroke-width="2.5" fill="none" stroke-linecap="round"/><rect x="110" y="88" width="60" height="28" rx="4" fill="white" stroke="#c0cfe8" stroke-width="1.5"/><rect x="116" y="94" width="35" height="3" rx="1.5" fill="#c0cfe8"/><rect x="116" y="101" width="28" height="3" rx="1.5" fill="#c0cfe8"/><text x="155" y="112" font-family="Nunito,sans-serif" font-size="12" font-weight="900" fill="#22a06b">✓</text></svg>'},
-
-  {antw:"naast",     tag:"pl", tagLabel:"Plaatsbepaling",
+   uitleg:"&#8596;&#65039; ondanks = tegenstelling. Je verwacht dat hij NIET meedoet — maar hij doet het toch.",
+   svg:'<svg viewBox="0 0 280 175" xmlns="http://www.w3.org/2000/svg" class="game-img"><rect width="280" height="175" fill="#E8F0FA"/><rect x="44" y="108" width="192" height="12" rx="5" fill="#a0724a"/><rect x="58" y="120" width="11" height="40" rx="4" fill="#7a5230"/><rect x="211" y="120" width="11" height="40" rx="4" fill="#7a5230"/><rect x="120" y="72" width="40" height="40" rx="10" fill="#3B5EC6"/><circle cx="140" cy="57" r="20" fill="#f5c09a"/><ellipse cx="131" cy="54" rx="3" ry="3.5" fill="#1a2840"/><ellipse cx="149" cy="54" rx="3" ry="3.5" fill="#1a2840"/><path d="M132,66 Q140,62 148,66" stroke="#a06040" stroke-width="2" fill="none"/><path d="M122,37 Q128,31 134,37 Q140,43 146,37" stroke="#e53e3e" stroke-width="2.5" fill="none" stroke-linecap="round"/><rect x="110" y="88" width="60" height="28" rx="4" fill="white" stroke="#c0cfe8" stroke-width="1.5"/><rect x="116" y="94" width="35" height="3" rx="1.5" fill="#c0cfe8"/><rect x="116" y="101" width="28" height="3" rx="1.5" fill="#c0cfe8"/><text x="155" y="112" font-family="Nunito,sans-serif" font-size="12" font-weight="900" fill="#22a06b">&#10003;</text></svg>'},
+  {antw:"naast", tag:"pl", tagLabel:"Plaatsbepaling",
    keuzes:["naast","voor","achter","tegenover"],
    vraag:"De fiets staat ___ <span>de boom</span>.",
-   uitleg:"📍 naast de boom = plaatsbepaling. Naast = ernaast, niet ervóór of erachter.",
+   uitleg:"&#128205; naast de boom = plaatsbepaling. Naast = ernaast, niet ervoor of erachter.",
    svg:'<svg viewBox="0 0 280 175" xmlns="http://www.w3.org/2000/svg" class="game-img"><rect width="280" height="175" fill="#c8e8f8"/><rect x="0" y="148" width="280" height="27" fill="#6abf6a"/><rect x="54" y="93" width="20" height="58" rx="5" fill="#7B4E1C"/><ellipse cx="64" cy="58" rx="42" ry="34" fill="#2d8a47"/><ellipse cx="44" cy="78" rx="28" ry="22" fill="#38a857"/><ellipse cx="84" cy="78" rx="28" ry="22" fill="#38a857"/><ellipse cx="64" cy="38" rx="28" ry="22" fill="#3ab860"/><circle cx="178" cy="132" r="20" fill="none" stroke="#1B3A6B" stroke-width="4"/><circle cx="178" cy="132" r="4" fill="#1B3A6B"/><circle cx="230" cy="132" r="20" fill="none" stroke="#1B3A6B" stroke-width="4"/><circle cx="230" cy="132" r="4" fill="#1B3A6B"/><line x1="178" y1="132" x2="204" y2="106" stroke="#1B3A6B" stroke-width="3.5"/><line x1="204" y1="106" x2="230" y2="132" stroke="#1B3A6B" stroke-width="3.5"/><line x1="204" y1="106" x2="184" y2="132" stroke="#1B3A6B" stroke-width="3"/><line x1="197" y1="112" x2="194" y2="98" stroke="#1B3A6B" stroke-width="3.5"/><rect x="185" y="95" width="18" height="6" rx="3" fill="#1B3A6B"/><line x1="224" y1="112" x2="226" y2="98" stroke="#1B3A6B" stroke-width="3.5"/><rect x="218" y="94" width="16" height="5" rx="2.5" fill="#1B3A6B"/></svg>'},
-
-  {antw:"in",        tag:"pl", tagLabel:"Plaatsbepaling",
+  {antw:"in", tag:"pl", tagLabel:"Plaatsbepaling",
    keuzes:["in","op","buiten","boven"],
    vraag:"De vogel zit ___ <span>de kooi</span>.",
-   uitleg:"📍 in de kooi = plaatsbepaling (binnenin iets). In = opgenomen in een ruimte.",
+   uitleg:"&#128205; in de kooi = plaatsbepaling (binnenin iets). In = opgenomen in een ruimte.",
    svg:'<svg viewBox="0 0 280 175" xmlns="http://www.w3.org/2000/svg" class="game-img"><rect width="280" height="175" fill="#E8F0FA"/><line x1="140" y1="8" x2="140" y2="26" stroke="#888" stroke-width="3"/><path d="M88,53 Q88,26 140,26 Q192,26 192,53" fill="none" stroke="#999" stroke-width="2.5"/><line x1="88" y1="53" x2="84" y2="148" stroke="#bbb" stroke-width="2.5"/><line x1="103" y1="35" x2="97" y2="148" stroke="#bbb" stroke-width="2.5"/><line x1="121" y1="28" x2="116" y2="148" stroke="#bbb" stroke-width="2.5"/><line x1="140" y1="26" x2="140" y2="148" stroke="#bbb" stroke-width="2.5"/><line x1="159" y1="28" x2="164" y2="148" stroke="#bbb" stroke-width="2.5"/><line x1="177" y1="35" x2="183" y2="148" stroke="#bbb" stroke-width="2.5"/><line x1="192" y1="53" x2="196" y2="148" stroke="#bbb" stroke-width="2.5"/><ellipse cx="140" cy="100" rx="56" ry="13" fill="none" stroke="#bbb" stroke-width="2"/><ellipse cx="140" cy="148" rx="58" ry="12" fill="#ddd" stroke="#999" stroke-width="2"/><line x1="108" y1="110" x2="172" y2="110" stroke="#8B6914" stroke-width="5"/><ellipse cx="140" cy="94" rx="15" ry="11" fill="#f5c542"/><circle cx="140" cy="80" r="10" fill="#f5c542"/><ellipse cx="129" cy="93" rx="9" ry="6" fill="#e8a820" transform="rotate(-15 129 93)"/><circle cx="144" cy="78" r="3" fill="#1a2840"/><polygon points="148,82 154,85 148,88" fill="#e06820"/></svg>'},
-
-  {antw:"achter",    tag:"pl", tagLabel:"Plaatsbepaling",
+  {antw:"achter", tag:"pl", tagLabel:"Plaatsbepaling",
    keuzes:["achter","voor","naast","bij"],
    vraag:"De hond zit ___ <span>het hek</span>.",
-   uitleg:"📍 achter het hek = plaatsbepaling. Achter = aan de andere kant van.",
+   uitleg:"&#128205; achter het hek = plaatsbepaling. Achter = aan de andere kant van.",
    svg:'<svg viewBox="0 0 280 175" xmlns="http://www.w3.org/2000/svg" class="game-img"><rect width="280" height="175" fill="#c8e8f8"/><rect x="0" y="148" width="280" height="27" fill="#6abf6a"/><ellipse cx="140" cy="155" rx="36" ry="16" fill="#c8874a"/><circle cx="140" cy="87" r="24" fill="#c8874a"/><ellipse cx="121" cy="73" rx="11" ry="16" fill="#a86a30" transform="rotate(-18 121 73)"/><ellipse cx="159" cy="73" rx="11" ry="16" fill="#a86a30" transform="rotate(18 159 73)"/><circle cx="131" cy="82" r="4.5" fill="#1a2840"/><circle cx="149" cy="82" r="4.5" fill="#1a2840"/><circle cx="132" cy="81" r="1.5" fill="white"/><circle cx="150" cy="81" r="1.5" fill="white"/><ellipse cx="140" cy="91" rx="6" ry="4.5" fill="#7a3a0e"/><path d="M134,95 Q140,101 146,95" stroke="#7a3a0e" stroke-width="2" fill="none"/><ellipse cx="140" cy="100" rx="5.5" ry="4.5" fill="#ff6b6b"/><rect x="48" y="78" width="15" height="76" rx="4" fill="#d4b070"/><polygon points="48,78 55.5,64 63,78" fill="#d4b070"/><rect x="110" y="78" width="15" height="76" rx="4" fill="#d4b070"/><polygon points="110,78 117.5,64 125,78" fill="#d4b070"/><rect x="172" y="78" width="15" height="76" rx="4" fill="#d4b070"/><polygon points="172,78 179.5,64 187,78" fill="#d4b070"/><rect x="48" y="92" width="139" height="11" rx="4" fill="#c8a058"/><rect x="48" y="122" width="139" height="11" rx="4" fill="#c8a058"/></svg>'},
-
-  {antw:"langs",     tag:"ri", tagLabel:"Richtingsbepaling",
+  {antw:"langs", tag:"ri", tagLabel:"Richtingsbepaling",
    keuzes:["langs","door","via","naast"],
    vraag:"Ze fietste ___ <span>het kanaal</span> naar huis.",
-   uitleg:"🧭 langs = parallel bewegen aan iets (richtingsbepaling). Door = erdoorheen.",
+   uitleg:"&#129517; langs = parallel bewegen aan iets (richtingsbepaling). Door = erdoorheen.",
    svg:'<svg viewBox="0 0 280 175" xmlns="http://www.w3.org/2000/svg" class="game-img"><rect width="280" height="175" fill="#c8e8f8"/><rect x="0" y="96" width="280" height="30" fill="#5a9fd4" opacity=".7"/><rect x="0" y="94" width="280" height="6" fill="#4a8fc4"/><rect x="0" y="120" width="280" height="55" fill="#6abf6a"/><rect x="0" y="120" width="280" height="8" fill="#c8b89a"/><circle cx="90" cy="117" r="9" fill="none" stroke="#1B3A6B" stroke-width="3"/><circle cx="90" cy="117" r="3" fill="#1B3A6B"/><circle cx="114" cy="117" r="9" fill="none" stroke="#1B3A6B" stroke-width="3"/><circle cx="114" cy="117" r="3" fill="#1B3A6B"/><line x1="90" y1="117" x2="102" y2="105" stroke="#1B3A6B" stroke-width="2.5"/><line x1="102" y1="105" x2="114" y2="117" stroke="#1B3A6B" stroke-width="2.5"/><line x1="102" y1="105" x2="97" y2="97" stroke="#1B3A6B" stroke-width="2.5"/><rect x="93" y="94" width="13" height="4" rx="2" fill="#1B3A6B"/><line x1="128" y1="117" x2="162" y2="117" stroke="#e53e3e" stroke-width="2" stroke-dasharray="4,3"/><polygon points="162,113 170,117 162,121" fill="#e53e3e"/><ellipse cx="30" cy="84" rx="16" ry="13" fill="#3a8a47"/><rect x="27" y="94" width="6" height="9" fill="#7B4E1C"/><ellipse cx="240" cy="82" rx="18" ry="14" fill="#2d8a47"/><rect x="237" y="94" width="6" height="9" fill="#7B4E1C"/></svg>'},
-
-  {antw:"via",       tag:"ri", tagLabel:"Richtingsbepaling",
+  {antw:"via", tag:"ri", tagLabel:"Richtingsbepaling",
    keuzes:["via","langs","door","over"],
    vraag:"De informatie werd ___ <span>het schoolportaal</span> verspreid.",
-   uitleg:"🧭 via = door middel van. Niet te verwarren met door (erdoorheen) of langs.",
-   svg:'<svg viewBox="0 0 280 175" xmlns="http://www.w3.org/2000/svg" class="game-img"><rect width="280" height="175" fill="#E8F0FA"/><rect x="78" y="88" width="124" height="18" rx="6" fill="#374151"/><path d="M86,88 L86,44 Q86,38 92,38 L188,38 Q194,38 194,44 L194,88 Z" fill="#1B3A6B"/><rect x="90" y="42" width="100" height="42" rx="3" fill="#3B5EC6"/><text x="140" y="58" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" font-weight="800" fill="white">SCHOOLPORTAAL</text><rect x="100" y="62" width="32" height="5" rx="2.5" fill="rgba(255,255,255,.3)"/><rect x="136" y="62" width="44" height="5" rx="2.5" fill="rgba(255,255,255,.2)"/><rect x="100" y="70" width="60" height="5" rx="2.5" fill="rgba(255,255,255,.2)"/><path d="M66,58 Q72,49 80,58" stroke="#3B5EC6" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M58,50 Q70,34 82,50" stroke="#3B5EC6" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M200,58 Q208,49 216,58" stroke="#3B5EC6" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M198,50 Q210,34 222,50" stroke="#3B5EC6" stroke-width="2.5" fill="none" stroke-linecap="round"/><rect x="85" y="85" width="110" height="4" rx="2" fill="#555"/><rect x="0" y="140" width="280" height="35" fill="#E8F0FA"/><text x="70" y="160" font-family="Nunito,sans-serif" font-size="10" fill="#5b6f8a">📨 Leerling A</text><line x1="130" y1="157" x2="165" y2="157" stroke="#3B5EC6" stroke-width="2" marker-end="url(#arr)"/><text x="170" y="160" font-family="Nunito,sans-serif" font-size="10" fill="#5b6f8a">📨 Leerling B</text></svg>'},
-
+   uitleg:"&#129517; via = door middel van. Niet te verwarren met door (erdoorheen) of langs.",
+   svg:'<svg viewBox="0 0 280 175" xmlns="http://www.w3.org/2000/svg" class="game-img"><rect width="280" height="175" fill="#E8F0FA"/><rect x="78" y="88" width="124" height="18" rx="6" fill="#374151"/><path d="M86,88 L86,44 Q86,38 92,38 L188,38 Q194,38 194,44 L194,88 Z" fill="#1B3A6B"/><rect x="90" y="42" width="100" height="42" rx="3" fill="#3B5EC6"/><text x="140" y="58" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" font-weight="800" fill="white">SCHOOLPORTAAL</text><rect x="100" y="62" width="32" height="5" rx="2.5" fill="rgba(255,255,255,.3)"/><rect x="136" y="62" width="44" height="5" rx="2.5" fill="rgba(255,255,255,.2)"/><rect x="100" y="70" width="60" height="5" rx="2.5" fill="rgba(255,255,255,.2)"/><path d="M66,58 Q72,49 80,58" stroke="#3B5EC6" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M58,50 Q70,34 82,50" stroke="#3B5EC6" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M200,58 Q208,49 216,58" stroke="#3B5EC6" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M198,50 Q210,34 222,50" stroke="#3B5EC6" stroke-width="2.5" fill="none" stroke-linecap="round"/><rect x="85" y="85" width="110" height="4" rx="2" fill="#555"/><rect x="0" y="140" width="280" height="35" fill="#E8F0FA"/><text x="65" y="160" font-family="Nunito,sans-serif" font-size="10" fill="#5b6f8a">Leerling A</text><text x="168" y="160" font-family="Nunito,sans-serif" font-size="10" fill="#5b6f8a">Leerling B</text></svg>'},
   {antw:"gedurende", tag:"ti", tagLabel:"Tijdsbepaling",
    keuzes:["gedurende","tijdens","tot","vanaf"],
    vraag:"___ <span>de zomervakantie</span> had hij een bijbaan.",
-   uitleg:"🕐 gedurende = voor de gehele duur van een periode. Formeler dan 'tijdens'.",
+   uitleg:"&#128336; gedurende = voor de gehele duur van een periode. Formeler dan 'tijdens'.",
    svg:'<svg viewBox="0 0 280 175" xmlns="http://www.w3.org/2000/svg" class="game-img"><rect width="280" height="175" fill="#fff8e8"/><circle cx="222" cy="40" r="26" fill="#f5c542"/><rect x="44" y="24" width="144" height="134" rx="10" fill="white" stroke="#c0cfe8" stroke-width="2"/><rect x="44" y="24" width="144" height="30" rx="10" fill="#3B5EC6"/><rect x="44" y="42" width="144" height="12" fill="#3B5EC6"/><text x="116" y="46" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="800" fill="white">JULI / AUGUSTUS</text><text x="60" y="74" font-family="Nunito,sans-serif" font-size="9" fill="#6b7280">M</text><text x="80" y="74" font-family="Nunito,sans-serif" font-size="9" fill="#6b7280">D</text><text x="100" y="74" font-family="Nunito,sans-serif" font-size="9" fill="#6b7280">W</text><text x="120" y="74" font-family="Nunito,sans-serif" font-size="9" fill="#6b7280">D</text><text x="140" y="74" font-family="Nunito,sans-serif" font-size="9" fill="#6b7280">V</text><rect x="54" y="80" width="120" height="13" rx="3" fill="#f5c542" opacity=".45"/><rect x="54" y="97" width="120" height="13" rx="3" fill="#f5c542" opacity=".45"/><rect x="54" y="114" width="120" height="13" rx="3" fill="#f5c542" opacity=".45"/><rect x="54" y="131" width="120" height="13" rx="3" fill="#f5c542" opacity=".45"/></svg>'},
-
   {antw:"tegenover", tag:"pl", tagLabel:"Plaatsbepaling",
    keuzes:["tegenover","naast","voor","achter"],
    vraag:"Jan zit ___ <span>zijn klasgenoot</span> aan tafel.",
-   uitleg:"📍 tegenover = aan de andere kant van iets (hier: de tafel). Niet hetzelfde als naast (ernaast).",
-   svg:'<svg viewBox="0 0 280 175" xmlns="http://www.w3.org/2000/svg" class="game-img"><rect width="280" height="175" fill="#E8F0FA"/><!-- floor --><rect x="0" y="150" width="280" height="25" fill="#c8b89a"/><!-- table top view --><rect x="70" y="68" width="140" height="52" rx="8" fill="#a0724a"/><!-- table surface highlight --><rect x="74" y="72" width="132" height="44" rx="6" fill="#b8845a"/><!-- table legs --><rect x="80" y="120" width="10" height="32" rx="4" fill="#7a5230"/><rect x="190" y="120" width="10" height="32" rx="4" fill="#7a5230"/><!-- ── PERSON LEFT (Jan) ── --><!-- body --><rect x="20" y="92" width="36" height="42" rx="10" fill="#3B5EC6"/><!-- head --><circle cx="38" cy="78" r="18" fill="#f5c09a"/><!-- eyes --><ellipse cx="31" cy="75" rx="2.5" ry="3" fill="#1a2840"/><ellipse cx="45" cy="75" rx="2.5" ry="3" fill="#1a2840"/><!-- smile --><path d="M32,84 Q38,89 44,84" stroke="#a06040" stroke-width="1.5" fill="none"/><!-- name tag --><rect x="14" y="140" width="28" height="12" rx="5" fill="#1B3A6B"/><text x="28" y="149" text-anchor="middle" font-family="Nunito,sans-serif" font-size="7" font-weight="800" fill="white">JAN</text><!-- arms on table --><rect x="54" y="100" width="20" height="8" rx="4" fill="#f5c09a"/><!-- ── PERSON RIGHT (klasgenoot) ── --><!-- body --><rect x="224" y="92" width="36" height="42" rx="10" fill="#d97706"/><!-- head --><circle cx="242" cy="78" r="18" fill="#f5c09a"/><!-- eyes --><ellipse cx="235" cy="75" rx="2.5" ry="3" fill="#1a2840"/><ellipse cx="249" cy="75" rx="2.5" ry="3" fill="#1a2840"/><!-- neutral mouth --><path d="M236,84 Q242,88 248,84" stroke="#a06040" stroke-width="1.5" fill="none"/><!-- name tag --><rect x="238" y="140" width="28" height="12" rx="5" fill="#d97706"/><text x="252" y="149" text-anchor="middle" font-family="Nunito,sans-serif" font-size="6" font-weight="800" fill="white">KLAS</text><!-- arms on table --><rect x="206" y="100" width="20" height="8" rx="4" fill="#f5c09a"/><!-- book on table --><rect x="116" y="78" width="48" height="32" rx="4" fill="white" stroke="#c0cfe8" stroke-width="1.5"/><rect x="122" y="84" width="18" height="3" rx="1.5" fill="#c0cfe8"/><rect x="122" y="90" width="28" height="3" rx="1.5" fill="#c0cfe8"/><rect x="122" y="96" width="22" height="3" rx="1.5" fill="#c0cfe8"/></svg>'})
-,
-  {antw:"zonder",    tag:"wi", tagLabel:"Bepaling van wijze",
+   uitleg:"&#128205; tegenover = aan de andere kant van iets (hier: de tafel). Niet hetzelfde als naast.",
+   svg:'<svg viewBox="0 0 280 175" xmlns="http://www.w3.org/2000/svg" class="game-img"><rect width="280" height="175" fill="#E8F0FA"/><rect x="0" y="150" width="280" height="25" fill="#c8b89a"/><rect x="70" y="68" width="140" height="52" rx="8" fill="#a0724a"/><rect x="74" y="72" width="132" height="44" rx="6" fill="#b8845a"/><rect x="80" y="120" width="10" height="32" rx="4" fill="#7a5230"/><rect x="190" y="120" width="10" height="32" rx="4" fill="#7a5230"/><rect x="20" y="92" width="36" height="42" rx="10" fill="#3B5EC6"/><circle cx="38" cy="78" r="18" fill="#f5c09a"/><ellipse cx="31" cy="75" rx="2.5" ry="3" fill="#1a2840"/><ellipse cx="45" cy="75" rx="2.5" ry="3" fill="#1a2840"/><path d="M32,84 Q38,89 44,84" stroke="#a06040" stroke-width="1.5" fill="none"/><rect x="14" y="140" width="28" height="12" rx="5" fill="#1B3A6B"/><text x="28" y="149" text-anchor="middle" font-family="Nunito,sans-serif" font-size="7" font-weight="800" fill="white">JAN</text><rect x="54" y="100" width="20" height="8" rx="4" fill="#f5c09a"/><rect x="224" y="92" width="36" height="42" rx="10" fill="#d97706"/><circle cx="242" cy="78" r="18" fill="#f5c09a"/><ellipse cx="235" cy="75" rx="2.5" ry="3" fill="#1a2840"/><ellipse cx="249" cy="75" rx="2.5" ry="3" fill="#1a2840"/><path d="M236,84 Q242,88 248,84" stroke="#a06040" stroke-width="1.5" fill="none"/><rect x="238" y="140" width="28" height="12" rx="5" fill="#d97706"/><text x="252" y="149" text-anchor="middle" font-family="Nunito,sans-serif" font-size="6" font-weight="800" fill="white">KLAS</text><rect x="206" y="100" width="20" height="8" rx="4" fill="#f5c09a"/><rect x="116" y="78" width="48" height="32" rx="4" fill="white" stroke="#c0cfe8" stroke-width="1.5"/><rect x="122" y="84" width="18" height="3" rx="1.5" fill="#c0cfe8"/><rect x="122" y="90" width="28" height="3" rx="1.5" fill="#c0cfe8"/><rect x="122" y="96" width="22" height="3" rx="1.5" fill="#c0cfe8"/></svg>'},
+  {antw:"zonder", tag:"wi", tagLabel:"Bepaling van wijze",
    keuzes:["zonder","met","buiten","naast"],
    vraag:"Hij deed het examen ___ <span>enige voorbereiding</span>.",
-   uitleg:"✏️ zonder = afwezigheid van iets (bepaling van wijze). Buiten heeft een andere betekenis.",
+   uitleg:"&#9999;&#65039; zonder = afwezigheid van iets (bepaling van wijze). Buiten heeft een andere betekenis.",
    svg:'<svg viewBox="0 0 280 175" xmlns="http://www.w3.org/2000/svg" class="game-img"><rect width="280" height="175" fill="#E8F0FA"/><rect x="44" y="108" width="192" height="12" rx="5" fill="#a0724a"/><rect x="58" y="120" width="11" height="38" rx="4" fill="#7a5230"/><rect x="211" y="120" width="11" height="38" rx="4" fill="#7a5230"/><rect x="120" y="73" width="40" height="38" rx="10" fill="#3B5EC6"/><circle cx="140" cy="58" r="19" fill="#f5c09a"/><ellipse cx="132" cy="55" rx="2.8" ry="3.2" fill="#1a2840"/><ellipse cx="148" cy="55" rx="2.8" ry="3.2" fill="#1a2840"/><path d="M134,66 Q140,70 146,66" stroke="#a06040" stroke-width="1.5" fill="none"/><rect x="108" y="89" width="64" height="32" rx="4" fill="white" stroke="#c0cfe8" stroke-width="1.5"/><rect x="115" y="96" width="30" height="3" rx="1.5" fill="#e0e0e0"/><rect x="115" y="103" width="24" height="3" rx="1.5" fill="#e0e0e0"/><rect x="115" y="110" width="20" height="3" rx="1.5" fill="#e0e0e0"/><rect x="186" y="78" width="44" height="50" rx="6" fill="white" stroke="#c0cfe8" stroke-width="1.5"/><text x="208" y="100" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#c0cfe8">leeg</text><line x1="190" y1="82" x2="226" y2="124" stroke="#e53e3e" stroke-width="2.5" opacity=".6"/><line x1="226" y1="82" x2="190" y2="124" stroke="#e53e3e" stroke-width="2.5" opacity=".6"/><rect x="0" y="152" width="280" height="23" fill="#c8b89a"/></svg>'}
 ];
 
@@ -472,45 +430,45 @@ function initGame() {
   scenes.forEach(function(sc, i) {
     var opts = shuffle(sc.keuzes);
     var card = document.createElement('div');
-    card.className = 'game-card'; card.id = 'gc' + i;
+    card.className = 'game-card'; card.id = 'gc'+i;
     var btns = opts.map(function(o) {
-      return '<button class="game-btn" onclick="checkGame(' + i + ',\'' + o + '\',\'' + sc.antw + '\',this)">' + o + '</button>';
+      return '<button class="game-btn" onclick="checkGame('+i+',\''+o+'\',\''+sc.antw+'\',this)">'+o+'</button>';
     }).join('');
     var tagClass = {pl:'pl',ri:'ri',ti:'ti',or:'or',wi:'wi'}[sc.tag] || 'pl';
     card.innerHTML =
       sc.svg +
-      '<div class="game-body">' +
-        '<div class="game-tag ' + tagClass + '">' + sc.tagLabel + '</div>' +
-        '<div class="game-q">' + sc.vraag + '</div>' +
-        '<div class="game-opts">' + btns + '</div>' +
-        '<div class="game-fb" id="gfb' + i + '"></div>' +
+      '<div class="game-body">'+
+        '<div class="game-tag '+tagClass+'">'+sc.tagLabel+'</div>'+
+        '<div class="game-q">'+sc.vraag+'</div>'+
+        '<div class="game-opts">'+btns+'</div>'+
+        '<div class="game-fb" id="gfb'+i+'"></div>'+
       '</div>';
     grid.appendChild(card);
   });
 }
 
 function checkGame(idx, chosen, correct, btn) {
-  var card = document.getElementById('gc' + idx);
+  var card = document.getElementById('gc'+idx);
   if (card.classList.contains('gc-ok') || card.classList.contains('gc-err')) return;
-  card.querySelectorAll('.game-btn').forEach(function(b) { b.disabled = true; });
-  var fb = document.getElementById('gfb' + idx);
+  card.querySelectorAll('.game-btn').forEach(function(b){ b.disabled=true; });
+  var fb = document.getElementById('gfb'+idx);
   if (chosen === correct) {
     card.classList.add('gc-ok'); btn.classList.add('gb-ok');
-    fb.innerHTML = '✓ Correct! &nbsp;' + scenes[idx].uitleg;
+    fb.innerHTML = '&#10003; Correct! &nbsp;'+scenes[idx].uitleg;
     fb.className = 'game-fb show ok';
     gsScore++; document.getElementById('gsS').textContent = gsScore;
   } else {
     card.classList.add('gc-err'); btn.classList.add('gb-err');
-    card.querySelectorAll('.game-btn').forEach(function(b) {
+    card.querySelectorAll('.game-btn').forEach(function(b){
       if (b.textContent === correct) b.classList.add('gb-rev');
     });
-    fb.innerHTML = '✗ Fout — antwoord: <strong>' + correct + '</strong><br>' + scenes[idx].uitleg;
+    fb.innerHTML = '&#10007; Fout — antwoord: <strong>'+correct+'</strong><br>'+scenes[idx].uitleg;
     fb.className = 'game-fb show err';
   }
   gsDone++;
-  document.getElementById('gsBar').style.width = (gsDone / scenes.length * 100) + '%';
+  document.getElementById('gsBar').style.width = (gsDone/scenes.length*100)+'%';
   if (gsDone === scenes.length) {
-    document.getElementById('gsFinal').textContent = gsScore + '/' + scenes.length;
+    document.getElementById('gsFinal').textContent = gsScore+'/'+scenes.length;
     document.getElementById('gsMsg').textContent = msg(gsScore, scenes.length);
     document.getElementById('gsBanner').classList.add('show');
   }
